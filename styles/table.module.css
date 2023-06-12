@@ -1,0 +1,8 @@
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  margin:5px ;
+}

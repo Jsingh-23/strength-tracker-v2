@@ -37,16 +37,25 @@ const Navbar = () => {
                   Bench Press
                 </Link>
               </li>
+
               <li className="nav-item">
               <Link className="nav-link" href="/squat">
                   Squat
                 </Link>
               </li>
+
               <li className="nav-item">
               <Link className="nav-link" href="/deadlift">
                   Deadlift
                 </Link>
               </li>
+
+              <li className="nav-item">
+              <Link className="nav-link" href="/showdata">
+                  All Data
+                </Link>
+              </li>
+
               <li className="nav-item">
                 <button className="btn btn-danger btn-sm" onClick={signOut}>
                   Logout

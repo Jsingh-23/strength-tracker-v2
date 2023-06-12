@@ -137,7 +137,7 @@ const SquatPage = () => {
 
     return (
       <div>
-        <h1 style={{textAlign:"center"}}> Bench Press Tracking!</h1>
+        <h1 style={{textAlign:"center"}}> Squat Tracking!</h1>
         <BarChart data={bar_chart_config}></BarChart>
         <LineChart data={line_chart_config}></LineChart>
         <WeightLiftingDataform></WeightLiftingDataform>

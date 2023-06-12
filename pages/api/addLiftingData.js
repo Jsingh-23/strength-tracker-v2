@@ -30,7 +30,14 @@ export default async function handler(req, res) {
     var curr_user = await User.findById(userId).exec();
     const liftData = {exercise, weight, repetitions, date};
 
-    console.log("date: " + date);
+    // console.log("date: " + date);
+    // console.log(curr_user.liftingData);
+
+    // curr_user.liftingData.forEach(obj => {
+    //   if (obj.date === date && obj.exercise === exercise) {
+    //     res.status(500).json({ error:  })
+    //   }
+    // })
 
     curr_user.liftingData.push(liftData);
     await curr_user.save();

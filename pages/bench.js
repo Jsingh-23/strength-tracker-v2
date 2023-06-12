@@ -42,6 +42,8 @@ const BenchPage = () => {
       getData();
     }, []); // end of useEffect()
 
+
+  // console.log(liftingData);
   var chart_data = [];
   var chart_labels = [];
 
@@ -73,6 +75,8 @@ const BenchPage = () => {
     const date = new Date(dateString);
     return date.toLocaleDateString();
   });
+
+  console.log(liftingData);
 
 
   var bar_chart_config = {

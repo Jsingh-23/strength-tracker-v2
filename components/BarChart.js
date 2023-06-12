@@ -33,7 +33,7 @@ const BarChart = ({ data }) => {
         options={{
           plugins: {
             title: {
-              display: true,
+              display: false,
               text: "Progression Since Beginning"
             },
             legend: {
