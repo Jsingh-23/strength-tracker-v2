@@ -119,6 +119,10 @@ const BenchPage = () => {
     ]
   }
 
+  const exerciseOptions = [
+    { value: 'Bench Press', label: 'Bench Press'}
+  ];
+
   if (status === "authenticated") {
     console.log(session); // log statement
 
@@ -127,7 +131,7 @@ const BenchPage = () => {
         <h1 style={{textAlign:"center"}}> Bench Press Tracking!</h1>
         <BarChart data={bar_chart_config}></BarChart>
         <LineChart data={line_chart_config}></LineChart>
-        <WeightLiftingDataform></WeightLiftingDataform>
+        <WeightLiftingDataform exerciseOptions={exerciseOptions}></WeightLiftingDataform>
       </div>
     )
   }

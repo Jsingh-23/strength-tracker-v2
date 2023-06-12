@@ -64,10 +64,13 @@ const ShowData = () => {
 
     return (
       <div>
-        <ExerciseTable
-        exercise={selectedExercise}
-        data={liftingData}>
-        </ExerciseTable>
+        <div className={styles.tableContainer}>
+          <ExerciseTable
+          className={styles.table}
+          exercise={selectedExercise}
+          data={liftingData}>
+          </ExerciseTable>
+        </div>
 
         <div className={styles.buttonGroup}>
           <button

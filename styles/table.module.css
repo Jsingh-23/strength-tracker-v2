@@ -3,6 +3,7 @@
   justify-content: center;
 }
 
-.btn {
-  margin:5px ;
+.tableContainer {
+  margin: auto;
+  width: 75%;
 }

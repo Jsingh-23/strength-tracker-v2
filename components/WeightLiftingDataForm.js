@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { useSession } from "next-auth/react";
 // import { useForm } from 'react-hook-form';
 
-const WeightLiftingDataform = ( {value}) => {
+const WeightLiftingDataform = ( {exerciseOptions}) => {
 
   const { data } = useSession();
 
-  var selected = value;
 
 
   const handleSubmit = async (data, e) => {
@@ -56,9 +55,14 @@ const WeightLiftingDataform = ( {value}) => {
     <div className="mb-3">
       <label htmlFor="exercise">Exercise</label>
       <select className="form-control" name="exercise">
-        <option value="Bench Press">Bench Press</option>
+        {exerciseOptions.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+        {/* <option value="Bench Press">Bench Press</option>
         <option value="Squat">Squat</option>
-        <option value="Deadlift">Deadlift</option>
+        <option value="Deadlift">Deadlift</option> */}
         {/* Add more options as needed */}
       </select>
     </div>

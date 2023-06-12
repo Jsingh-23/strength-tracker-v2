@@ -132,6 +132,10 @@ const SquatPage = () => {
     ]
   }
 
+  const exerciseOptions = [
+    { value: 'Squat', label: 'Squat'}
+  ];
+
   if (status === "authenticated") {
     console.log(session); // log statement
 
@@ -140,7 +144,7 @@ const SquatPage = () => {
         <h1 style={{textAlign:"center"}}> Squat Tracking!</h1>
         <BarChart data={bar_chart_config}></BarChart>
         <LineChart data={line_chart_config}></LineChart>
-        <WeightLiftingDataform></WeightLiftingDataform>
+        <WeightLiftingDataform exerciseOptions={exerciseOptions}></WeightLiftingDataform>
       </div>
     )
   }
