@@ -11,6 +11,7 @@ import { useState } from "react";
 import BarChart from "../components/BarChart";
 // import "./styles.css";
 import styles from "@/styles/MyApp.module.css";
+import { DateTime } from 'luxon';
 
 Chart.register(CategoryScale);
 

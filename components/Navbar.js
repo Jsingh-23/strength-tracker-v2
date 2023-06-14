@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
+import styles from "@/styles/Navbar.module.css";
 
 const Navbar = () => {
 
@@ -13,7 +14,7 @@ const Navbar = () => {
         <Link
         className="navbar-brand"
         href="/"
-        style={{ fontWeight: 'bold', color: 'orange'}}>
+        style={{ fontWeight: 'bold', color: 'green'}}>
           Strength Tracker
         </Link>
         <button

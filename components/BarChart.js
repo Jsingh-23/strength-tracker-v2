@@ -1,45 +1,42 @@
 import { Bar } from "react-chartjs-2";
 import styles from '@/styles/chart.module.css';
+import 'chartjs-plugin-datalabels';
 
-const BarChart = ({ data }) => {
-  // const my_data = {
-  //   labels: ['1/15', '2/15', '3/15'],
-  //   // datasets is an array of objects where each object represents a set of data to display corresponding to the labels above. for brevity, we'll keep it at one object
-  //   datasets: [
-  //       {
-  //         label: 'Popularity of colours',
-  //         data: [105, 115, 155],
-  //         // you can set indiviual colors for each bar
-  //         backgroundColor: [
-  //           'rgba(245, 173, 66, 0.6)',
-  //           'rgba(245, 173, 66, 0.6)',
-  //           'rgba(245, 173, 66, 0.6)',
-  //         ],
-  //         borderWidth: 1,
-  //       }
-  //   ]
-  // }
-
-  // const my_data = {
-  //   labels: labels,
-  //   datasets: datasets,
-  // };
+const BarChart = ({ my_data, rep_data }) => {
 
   return (
     <div className={styles["chart-container"]}>
-      <h2 style={{ textAlign: "center" }}>Progression</h2>
+      <h2 style={{ textAlign: "center" }}></h2>
       <Bar
-        data={data}
+        data={my_data}
         options={{
           plugins: {
+              tooltip: {
+                enabled: true,
+                callbacks: {
+                  label: (tooltipItem, data) => {
+                    const dataIndex = tooltipItem.dataIndex;
+                    const repetitionsData = rep_data;
+                    var labels = [`Weight: ${my_data.datasets[0].data[dataIndex]}`, `Repetitions: ${repetitionsData[dataIndex]}`];
+                    return labels;
+                    // return `Repetitions: ${repetitionsData[dataIndex]}`;
+                  }
+                }
+              },
+              chartAreaBorder: {
+                borderColor: 'red',
+                borderWidth: 2,
+                borderDash: [5, 5],
+                borderDashOffset: 2,
+              },
+            },
             title: {
               display: false,
               text: "Progression Since Beginning"
             },
             legend: {
               display: false
-            }
-          },
+            },
           scales: {
             x: {
               title: {

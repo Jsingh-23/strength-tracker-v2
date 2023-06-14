@@ -22,7 +22,7 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Get started by uploading your lifting data!
+          Get started by uploading your <Link className={styles.link} href="/showdata">lifting data!</Link>
         </p>
 
         <div className={styles.grid}>

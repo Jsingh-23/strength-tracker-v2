@@ -58,6 +58,8 @@ const SquatPage = () => {
 
   var chart_data = [];
   var chart_labels = [];
+  var repetitions_data = [];
+
 
   const { data: session, status } = useSession();
 
@@ -65,9 +67,7 @@ const SquatPage = () => {
       return <div> Loading... </div>;
   }
 
-  // console.log("this is the lifting data:  " + liftingData[0].date);
-
-
+  console.log("lifting data: " + liftingData[0].date);
   // sort the liftingData by date
   liftingData.sort((a, b) => {
     const dateA = new Date(a.date);
@@ -81,6 +81,7 @@ const SquatPage = () => {
     if (arrayItem.exercise === 'Squat') {
       chart_labels.push(arrayItem.date);
       chart_data.push(arrayItem.weight);
+      repetitions_data.push(arrayItem.repetitions);
     }
   });
 
@@ -88,7 +89,7 @@ const SquatPage = () => {
   // format the date labels so that they are more readable
   const formatted_labels = chart_labels.map(dateString => {
     const date = new Date(dateString);
-    return date.toLocaleDateString();
+    return date.toLocaleDateString('en-US', {timeZone: 'UTC'});
   });
 
 
@@ -137,13 +138,13 @@ const SquatPage = () => {
   ];
 
   if (status === "authenticated") {
-    console.log(session); // log statement
+    // console.log(session); // log statement
 
     return (
       <div>
         <h1 style={{textAlign:"center"}}> Squat Tracking!</h1>
-        <BarChart data={bar_chart_config}></BarChart>
-        <LineChart data={line_chart_config}></LineChart>
+        <BarChart my_data={bar_chart_config} rep_data={repetitions_data}></BarChart>
+        <LineChart my_data={line_chart_config} rep_data={repetitions_data}></LineChart>
         <WeightLiftingDataform exerciseOptions={exerciseOptions}></WeightLiftingDataform>
       </div>
     )

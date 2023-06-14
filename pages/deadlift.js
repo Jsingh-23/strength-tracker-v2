@@ -58,6 +58,8 @@ const DeadliftPage = () => {
 
   var chart_data = [];
   var chart_labels = [];
+  var repetitions_data = [];
+
 
   const { data: session, status } = useSession();
 
@@ -67,7 +69,7 @@ const DeadliftPage = () => {
 
   // console.log("this is the lifting data:  " + liftingData[0].date);
 
-
+  console.log("lifting data: " + liftingData);
   // sort the liftingData by date
   liftingData.sort((a, b) => {
     const dateA = new Date(a.date);
@@ -81,6 +83,7 @@ const DeadliftPage = () => {
     if (arrayItem.exercise === 'Deadlift') {
       chart_labels.push(arrayItem.date);
       chart_data.push(arrayItem.weight);
+      repetitions_data.push(arrayItem.repetitions);
     }
   });
 
@@ -88,7 +91,7 @@ const DeadliftPage = () => {
   // format the date labels so that they are more readable
   const formatted_labels = chart_labels.map(dateString => {
     const date = new Date(dateString);
-    return date.toLocaleDateString();
+    return date.toLocaleDateString('en-US', {timeZone: 'UTC'});
   });
 
 
@@ -142,8 +145,8 @@ const DeadliftPage = () => {
     return (
       <div>
         <h1 style={{textAlign:"center"}}> Deadlift Tracking!</h1>
-        <BarChart data={bar_chart_config}></BarChart>
-        <LineChart data={line_chart_config}></LineChart>
+        <BarChart my_data={bar_chart_config} rep_data={repetitions_data}></BarChart>
+        <LineChart my_data={line_chart_config} rep_data={repetitions_data}></LineChart>
         <WeightLiftingDataform exerciseOptions={exerciseOptions}></WeightLiftingDataform>
       </div>
     )

@@ -73,6 +73,11 @@
   max-width: 800px;
 }
 
+.link {
+  color:blue;
+  text-decoration: underline;
+}
+
 .info {
   width: 50%;
   /* align-items: center; */

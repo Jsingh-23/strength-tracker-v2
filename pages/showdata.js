@@ -57,11 +57,6 @@ const ShowData = () => {
       return <div> Loading... </div>
     }
 
-    console.log(liftingData);
-
-
-
-
     return (
       <div>
         <div className={styles.tableContainer}>
@@ -80,6 +75,7 @@ const ShowData = () => {
           >
             Bench Press
           </button>
+
           <button
             className="btn btn-primary"
             style={{ margin: '0 5px' }}
@@ -87,6 +83,7 @@ const ShowData = () => {
           >
             Squats
           </button>
+
           <button
             className="btn btn-primary"
             style={{ margin: '0 5px' }}

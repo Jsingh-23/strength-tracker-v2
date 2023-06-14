@@ -28,10 +28,6 @@ const userSchema = new mongoose.Schema(
       }
     ],
   }
-
-  //   weightLiftingData: [{ type: mongoose.Schema.Types.ObjectID, ref: 'WeightLiftingData' }],
-  // },
-  // { timestamps: true }
 );
 
 userSchema.pre("save", async function (next) {

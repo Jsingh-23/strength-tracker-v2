@@ -48,7 +48,9 @@ export default async function handler(req, res) {
 
     await weightLiftingData.save();
 
-    res.redirect(req.headers.referer);
+    // console.log("Complete!!!");
+    // res.redirect(req.headers.referer);
+    res.status(200).json("Submitted!");
   } catch (error) {
     res.status(500).json({ error: 'Something went wrong' });
   }
