@@ -1,0 +1,63 @@
+.header_container {
+  width: 50;
+  margin: auto;
+  text-align: center;
+}
+
+.header {
+  text-align: center;
+}
+
+.card_container {
+  width: 40%;
+  margin: auto;
+  margin-bottom: 1%;
+}
+
+.card_container_stats {
+  width: 60%;
+  margin: auto;
+  margin-bottom: 1%;
+}
+
+.text_center {
+  text-align: center;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  align-items: center;
+  padding-top: 1%;
+  /* height: 100%; */
+}
+
+.bmr {
+  color: #ff0000; /* Set the desired color for the BMR value */
+  font-weight: bold; /* Make the BMR value bold */
+}
+
+.table {
+  margin-top: 1rem;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 0.5rem;
+  text-align: center;
+  /* border-right: none; */
+  border: 1px solid #ccc;
+  border-right: none;
+  border-left: none;
+}
+
+.boldRow {
+  font-weight: bold;
+}
+
+.bmi_header {
+  margin-top: 10%;
+}
+
+
+

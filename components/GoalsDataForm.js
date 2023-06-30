@@ -4,11 +4,12 @@ import { useSession } from "next-auth/react";
 import styles from '@/styles/form.module.css';
 
 
-const WeightLiftingDataform = ( { onFormSubmit }) => {
+const GoalsDataForm = ( { onFormSubmit }) => {
 
   const { data } = useSession();
 
   const [liftingData, setLiftingData] = useState([]);
+  // const [goalsData, setGoalsData] = useState([]);
   const [exercises, setExercises] = useState([]);
   const [exerciseName, setExerciseName] = useState('');
   const [formValues, setFormValues] = useState({
@@ -29,6 +30,7 @@ const WeightLiftingDataform = ( { onFormSubmit }) => {
         } else {
           throw new Error("Couldn't fetch data :( ");
         }
+
         const response2 = await fetch("/api/getExerciseData");
         if (response2.ok) {
           const data2 = await response2.json();
@@ -37,6 +39,16 @@ const WeightLiftingDataform = ( { onFormSubmit }) => {
         } else {
           throw new Error("Couldn't fetch exercises array");
         }
+
+        // const response3 = await fetch("/api/getGoalsData");
+        // if (response3.ok) {
+        //   const data3 = await response3.json();
+        //   // console.log("data2: ", data2);
+        //   setGoalsData(data3);
+        // } else {
+        //   throw new Error("Couldn't fetch goals array");
+        // }
+
 
       } catch (error) {
           console.error(error);
@@ -54,18 +66,12 @@ const WeightLiftingDataform = ( { onFormSubmit }) => {
       getData();
     }, [exerciseName]); // end of useEffect()
 
-  // console.log("exercises: " + exercises);
-  // console.log("form vals: ", formValues);
-
-
+    // console.log("curr size ", goalsData.length);
 
 
 
 
   const handleSubmit = async (event) => {
-
-    // console.log("e: " + event);
-    // console.log("data: " + data.size);
 
     event.preventDefault();
 
@@ -77,13 +83,12 @@ const WeightLiftingDataform = ( { onFormSubmit }) => {
     var formData = new FormData(event.target);
     var jsonData = JSON.stringify({
       exercise: formData.get('exercise'),
-      date: formData.get('date'),
       weight: formData.get('weight'),
       repetitions: formData.get('repetitions')
     });
 
     try {
-      const res = await fetch('/api/addLiftingData', {
+      const res = await fetch('/api/addGoalsData', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json'},
         body: jsonData,
@@ -101,35 +106,19 @@ const WeightLiftingDataform = ( { onFormSubmit }) => {
     } catch (error) {
       // console.log(error);
       // console.log("here!");
-      console.log('Failed to add weightlifting data.', error);
+      console.log('Failed to add goals data.', error);
     }
   };
-
-  // const handleButtonClick = () => {
-  //   onFormSubmit();
-  // };
 
   return (
     <div className={`card bg-light ${styles.container}`}>
       {/* Form for Uploading Weightlifting Data */}
       <form
-      action="/api/addLiftingData"
+      action="/api/addGoalsData"
       method="post"
       onSubmit={(event) => handleSubmit(event)}
       style={{ maxWidth: "576px", margin: "auto" }}>
-      <h3 className="text-center my-5">Upload Your Lifts!</h3>
-
-      {/* Date Input */}
-      <div className="mb-3">
-        <label htmlFor="date">Date</label>
-        <input
-          required
-          type="date"
-          className="form-control"
-          name="date"
-          id="form_date"
-        />
-      </div>
+      <h3 className="text-center my-5">Upload Your Goals!</h3>
 
       {/* Exercise Input */}
       <div className="mb-3">
@@ -184,4 +173,4 @@ const WeightLiftingDataform = ( { onFormSubmit }) => {
   )
 }
 
-export default WeightLiftingDataform;
+export default GoalsDataForm;

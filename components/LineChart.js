@@ -12,7 +12,7 @@ const LineChart = ({ my_data, rep_data }) => {
         options={{
           plugins: {
             tooltip: {
-              enabled: true,
+              enabled: rep_data.length > 0,
               callbacks: {
                 label: (tooltipItem, data) => {
                   const dataIndex = tooltipItem.dataIndex;

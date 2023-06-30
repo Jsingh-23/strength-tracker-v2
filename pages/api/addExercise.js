@@ -11,15 +11,11 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { useRouter } from "next/router";
 
 
-console.log("hello");
 initDB();
 
 export default async function handler(req, res) {
-
-  console.log("hi!");
   const session = await getServerSession(req, res, authOptions);
   const token = await getToken({ req });
-
 
   if (!session) {
     console.log('no session...');
@@ -27,20 +23,15 @@ export default async function handler(req, res) {
     return;
   }
   try {
-    console.log("req body: ", req.body);
 
-    const { exercise, weight, repetitions, date} = req.body;
+    // console.log("req body: " + req.body);
+    const exerciseName  = req.body;
+    // console.log("req body name: " + Json.exerciseName);
     const userId = session.user.id;
 
     var curr_user = await User.findById(userId).exec();
-    const liftData = {exercise, weight, repetitions, date};
-
-    console.log("lift data: ", liftData);
-
-    curr_user.liftingData.push(liftData);
+    curr_user.exercises.push(exerciseName);
     await curr_user.save();
-    console.log("is this it...");
-
 
 
     // console.log("Complete!!!");

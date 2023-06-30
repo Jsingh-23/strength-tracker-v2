@@ -7,3 +7,12 @@
   margin: auto;
   width: 75%;
 }
+
+.container {
+  width: 50%;
+  margin: auto;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  background-color: gray;
+  padding: 1%;
+}

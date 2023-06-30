@@ -33,21 +33,22 @@ const Navbar = () => {
             {/* if 'data.user' exists, then the Logout button is rendered, otherwise the Register and Login links are rendered */}
             {data?.user ? (
               <>
+
               <li className="nav-item">
-                <Link className="nav-link" href="/bench">
-                  Bench Press
+                <Link className="nav-link" href="/weight">
+                  Weight Goals
                 </Link>
               </li>
 
               <li className="nav-item">
-              <Link className="nav-link" href="/squat">
-                  Squat
+                <Link className="nav-link" href="/visualize">
+                  Visualizations
                 </Link>
               </li>
 
               <li className="nav-item">
-              <Link className="nav-link" href="/deadlift">
-                  Deadlift
+                <Link className="nav-link" href="/goals">
+                  Goals
                 </Link>
               </li>
 

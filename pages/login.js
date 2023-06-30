@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
+import { useSession } from 'next-auth/react';
+
 
 const Login = () => {
   const router = useRouter();
+
+  const { data: session, status } = useSession();
+  if (status === "authenticated") {
+    router.push("/");
+  }
 
   const [values, setValues] = useState({
     email: "",

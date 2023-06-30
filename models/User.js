@@ -18,13 +18,23 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-
+    exercises: {
+      type: [String],
+      default: ['Bench Press', 'Deadlift', 'Squat'],
+    },
     liftingData: [
       {
         repetitions: { type: Number },
         exercise: { type: String },
         date: { type: Date},
         weight: { type: Number},
+      }
+    ],
+    goalsData: [
+      {
+        repetitions: {type: Number},
+        exercise: { type: String},
+        weight: { type: Number}
       }
     ],
   }

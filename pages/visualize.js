@@ -10,24 +10,45 @@ import React, { useEffect, useState } from "react";
 
 import initDB from "@/utils/db";
 import { getToken } from "next-auth/jwt";
+import styles from '@/styles/form.module.css';
+
 
 const BenchPage = () => {
 
+  const router = useRouter();
   const [liftingData, setLiftingData] = useState(null);
+  const [exercises, setExercises] = useState([]);
+  const [currentExercise, setCurrentExercise] = useState('Bench Press');
+
   const [formSubmitted, setFormSubmitted] = useState(null);
-  const [chartDataType, setChartDataType] = useState("Volume");
+  const [chartDataType, setChartDataType] = useState("Max Weight");
+  const [formSubmissions, setFormSubmissions] = useState(0);
+
+  // console.log("submits: ", formSubmissions);
 
   useEffect(() => {
+    console.log("running use effect...");
     const fetchData = async () => {
+      console.log("running useEffect...");
       try {
         const response = await fetch("/api/getLiftingData");
         if (response.ok) {
           const data = await response.json();
+          console.log("length in useeffect: ", data.length);
           setLiftingData(data);
           // console.log(data);
         } else {
           throw new Error("Couldn't fetch data :( ");
         }
+        const response2 = await fetch("/api/getExerciseData");
+        if (response2.ok) {
+          const data2 = await response2.json();
+          // console.log("data2: ", data2);
+          setExercises(data2);
+        } else {
+          throw new Error("Couldn't fetch exercises array");
+        }
+
       } catch (error) {
           console.error(error);
         }
@@ -42,15 +63,18 @@ const BenchPage = () => {
       }
 
       getData();
-    }, []); // end of useEffect()
-
+    }, [formSubmissions]); // end of useEffect()
 
   // store weight, date, and repetitions data for Bench Press
   var chart_data = [];
   var chart_labels = [];
   var repetitions_data = [];
 
+  // if user is not authenticated, reroute them to the login page
   const { data: session, status } = useSession();
+  if (status === "unauthenticated") {
+    router.push("/login");
+  }
 
   if (liftingData === null) {
       return <div> Loading... </div>;
@@ -67,7 +91,8 @@ const BenchPage = () => {
   // create an array of weights, and corresponding dates
   liftingData.forEach(function (arrayItem) {
     // console.log(arrayItem);
-    if (arrayItem.exercise === 'Bench Press') {
+    // if (arrayItem.exercise === 'Bench Press') {
+    if (arrayItem.exercise === currentExercise) {
       chart_labels.push(arrayItem.date);
       chart_data.push(arrayItem.weight);
       repetitions_data.push(arrayItem.repetitions);
@@ -87,12 +112,11 @@ const BenchPage = () => {
   for (var i = 0; i < chart_data.length; i++) {
     total_volume_data.push(chart_data[i] * repetitions_data[i]);
   }
-  console.log("chart_data: " + chart_data);
-  console.log("rep_data: " + repetitions_data);
-  console.log("volume_data: " + total_volume_data);
+  // console.log("chart_data: " + chart_data);
+  // console.log("rep_data: " + repetitions_data);
+  // console.log("volume_data: " + total_volume_data);
 
   var data_to_show;
-
   if (chartDataType === "Volume") {
     data_to_show = total_volume_data;
   } else {
@@ -145,20 +169,48 @@ const BenchPage = () => {
   const handleChartDataType = () => {
     if (chartDataType === "Volume") {
       setChartDataType("Max Weight");
-    } else {
+    } else if (chartDataType === "Max Weight") {
       setChartDataType("Volume");
     }
   }
 
+  const handleExerciseChange = (exercise) => {
+    setCurrentExercise(exercise);
+  };
+
+  // when the form is submitted, I want to change my page's formSubmissions state
+  // so that the charts are rerendered with the new data
+  const handleFormSubmit = () => {
+    console.log("Submitted! ", formSubmissions);
+    setFormSubmissions(formSubmissions + 1);
+  }
+
+  // console.log("dates: ", formatted_labels);
+  // console.log("labels: ", chart_labels);
+
+
 
 
   if (status === "authenticated") {
-    // console.log(session); // log statement
 
     return (
       <div>
-        <h1 style={{textAlign:"center"}}> Bench Press Tracking!</h1>
-        <div style={{textAlign:"center"}}>
+        <h1 className={styles.heading}> {currentExercise} Tracking!</h1>
+
+        <div className={styles.exercise_buttons}>
+          {exercises.map((exercise) => (
+                <button
+                  key={exercise}
+                  className="btn btn-primary"
+                  style={{ margin: '0 5px' }}
+                  onClick={() => handleExerciseChange(exercise)}
+                >
+                  {exercise}
+                </button>
+            ))}
+        </div>
+
+        <div className={styles.chart_data_type_buttons}>
           <button
               className="btn btn-primary"
               style={{ margin: '0 5px' }}
@@ -169,7 +221,8 @@ const BenchPage = () => {
         </div>
         <BarChart my_data={bar_chart_config} rep_data={repetitions_data}></BarChart>
         <LineChart my_data={line_chart_config} rep_data={repetitions_data}></LineChart>
-        <WeightLiftingDataform exerciseOptions={exerciseOptions}></WeightLiftingDataform>
+        <WeightLiftingDataform onFormSubmit={handleFormSubmit}></WeightLiftingDataform>
+
       </div>
     )
   }

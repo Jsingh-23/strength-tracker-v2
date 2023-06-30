@@ -3,10 +3,13 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import image from "next/image"
 
 export default function Home() {
 
   const { data } = useSession();
+
+  console.log(data);
 
   return (
     <div className={styles.container}>
@@ -46,7 +49,7 @@ export default function Home() {
         <h2>We&apos;ll help you track your progress and optimize your workouts based on your input and your favorite routines.</h2>
         </div>
 
-        <div className={styles.imageContainer}>
+        <div className={`card bg-light ${styles.imageContainer}`}>
           <img src="/deadlift.jpeg" className={styles.imageFit}>
 
           </img>

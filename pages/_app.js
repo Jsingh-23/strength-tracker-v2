@@ -13,19 +13,27 @@ import BarChart from "../components/BarChart";
 import styles from "@/styles/MyApp.module.css";
 import { DateTime } from 'luxon';
 
+import { Roboto_Flex } from 'next/font/google';
+
+const montserrat = Roboto_Flex({ subsets: ['latin']});
+
+
+
 Chart.register(CategoryScale);
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
-    <SessionProvider session={session}>
-      <div className={styles.container}>
-        <Navbar />
-        <div className={styles.content}>
-          <Component {...pageProps} />
+    <main className={montserrat.className}>
+      <SessionProvider session={session}>
+        <div className={styles.container}>
+          <Navbar />
+          <div className={styles.content}>
+            <Component {...pageProps} />
+          </div>
         </div>
-      </div>
-      <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" />
-    </SessionProvider>
+        <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" />
+      </SessionProvider>
+    </main>
   );
 }
 
