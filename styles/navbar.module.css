@@ -1,0 +1,21 @@
+.brand {
+  font-weight: bold;
+  color: green;
+  font-size: 2vh;
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px;
+  list-style-type: none;
+}
+
+.links {
+  font-weight: bold;
+  padding: 5px 10px;
+}
+
+
+
+
