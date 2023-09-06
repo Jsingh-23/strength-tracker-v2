@@ -21,7 +21,7 @@ const Navbar = () => {
     "Ligue 1 🇫🇷": 61,
     "Serie A 🇮🇹": 135,
     "Bundesliga 🇩🇪": 78,
-    "Premier Leage 🇬🇧": 39,
+    "Premier League 🇬🇧": 39,
     "Primera Division 🇪🇸": 140,
     "Primeira Liga 🇵🇹": 94,
     "Eredivise 🇳🇱": 88,
@@ -76,30 +76,30 @@ const Navbar = () => {
                 </Link>
               </li>
 
+              <li className="nav-item">
+              <Link className={styles.links} href="/sports/nbastandings">
+                  NBA Standings
+                </Link>
+              </li>
+
               <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
                 <ul className="navbar-nav">
                 <li className="nav-item dropdown">
                   <button className="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Football Standings
+                    Sports!
                   </button>
+
                   <ul className="dropdown-menu dropdown-menu-dark">
-                    {Object.keys(leagues).map(function (key) {
-                    return (
-                      <div key={key} className="relative">
-                        <Link
-                          href={`/sports/${leagues[key]}`}
-                          className="group inline-flex items-center rounded-md bg-white text-base font-medium text-gray-500 outline-none hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-300 focus:ring-offset-2"
-                          aria-expanded="false"
-                        >
-                          <span>{key}</span>
-                        </Link>
-                      </div>
-                    )
-                  })}
-                </ul>
+                    <div className={styles.relative}>
+                      <Link href='/sports/nbastandings' className={`${styles.dropdownlink} text-center`}>  NBA </Link>
+                    </div>
+                    <div className={styles.relative}>
+                      <Link href='/sports/39' className={`${styles.dropdownlink} text-center`}> Premier League </Link>
+                    </div>
+                  </ul>
                 </li>
                 </ul>
-                </div>
+              </div>
 
               <li className="nav-item">
                 <button className="btn btn-danger btn-sm" onClick={signOut}>

@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  justify-content: center;
+  width: 75%;
+  text-align: center;
+  margin: auto;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table {
+  text-align: center;
+  /* overflow: hidden; */
+}
+
+.header {
+  text-align: center;
+}
+
+.relative {
+  text-align: center;
+  margin: auto;
+}
+
+.dropdownlink {
+  text-align: center;
+  display: block;
+  margin: auto;
+}
