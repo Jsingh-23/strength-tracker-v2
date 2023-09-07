@@ -76,16 +76,10 @@ const Navbar = () => {
                 </Link>
               </li>
 
-              <li className="nav-item">
-              <Link className={styles.links} href="/sports/nbastandings">
-                  NBA Standings
-                </Link>
-              </li>
-
               <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
                 <ul className="navbar-nav">
                 <li className="nav-item dropdown">
-                  <button className="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button className="btn btn-dark dropdown-toggle btn-sm" data-bs-toggle="dropdown" aria-expanded="false">
                     Sports!
                   </button>
 

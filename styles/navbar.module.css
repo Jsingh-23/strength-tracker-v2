@@ -5,15 +5,28 @@
 }
 
 .navbar-nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 0px;
-  list-style-type: none;
+  /* display: flex; */
+  /* justify-content: flex-end; */
+  /* padding: 0px; */
+  /* list-style-type: none; */
 }
 
 .links {
   font-weight: bold;
   padding: 5px 10px;
+}
+
+.relative {
+  text-align: center;
+}
+
+
+.dropdownlink {
+  margin: auto;
+}
+
+#navbarNavDarkDropdown {
+  padding-right: 10%;
 }
 
 
