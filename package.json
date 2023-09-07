@@ -1,8 +1,5 @@
 {
   "name": "strength-tracker-v2",
-  "engines": {
-    "node": ">=16.18.1"
-  },
   "private": true,
   "scripts": {
     "dev": "next dev",
