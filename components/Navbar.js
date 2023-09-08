@@ -1,8 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
-import styles from "../styles/Navbar.module.css";
-// import Dropdown from 'bootstrap';
+import styles from "../styles/navbar.module.css";
 
 
 const Navbar = () => {
