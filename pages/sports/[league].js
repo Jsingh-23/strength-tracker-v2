@@ -38,12 +38,14 @@ function LeaguePage( {leagueData, nbaData }) {
     "Eredivise 🇳🇱": 88,
   };
 
+  if (leagueData === null) {
+      return <div> Loading... </div>;
+  }
+
   const leagueStandings = leagueData.response[0].league.standings[0];
   // console.log(leagueStandings);
 
-  if (leagueData === null) {
-    return <div> Loading... </div>;
-  }
+
 
   return (
     <div>
