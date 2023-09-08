@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   useEffect(() => {
     getLeagueData()
       .then((data) => {
-        setLeagueData(data);
+        setLeagueData(data || {});
       })
       .catch((error) => {
         console.error('Error fetching football league data:', error);
@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   useEffect(() => {
     getNBAData()
       .then((data) => {
-        setnbaData(data);
+        setnbaData(data || {});
       })
       .catch((error) => {
         console.error('Error fetching nba data:', error);
@@ -63,5 +63,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     </main>
   );
 }
+
+// myApp.getInitialProps = async (appContext) => {}
 
 export default MyApp;

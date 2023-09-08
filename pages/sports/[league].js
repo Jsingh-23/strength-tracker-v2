@@ -11,21 +11,21 @@ function LeaguePage( {leagueData, nbaData }) {
   const [leagueID, setLeagueID] = useState(null);
   const [data, setData] = useState(null);
 
-  useEffect(() => {
-    if (router.isReady) {
-      setIsRouterReady(true);
-    }
-  }, [router.isReady]);
+  // useEffect(() => {
+  //   if (router.isReady) {
+  //     setIsRouterReady(true);
+  //   }
+  // }, [router.isReady]);
 
-  useEffect(() => {
-    if (isRouterReady && Object.keys(router.query).length !== 0) {
-      setLeagueID(router.query.league);
-    }
-    else {
-      return;
-    }
+  // useEffect(() => {
+  //   if (isRouterReady && Object.keys(router.query).length !== 0) {
+  //     setLeagueID(router.query.league);
+  //   }
+  //   else {
+  //     return;
+  //   }
 
-  }, [isRouterReady, router.query]);
+  // }, [isRouterReady, router.query]);
 
   // different football leagues
   const leagues = {

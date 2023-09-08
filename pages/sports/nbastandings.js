@@ -10,21 +10,21 @@ function NBAStandingsPage( {leagueData, nbaData }) {
   const [leagueID, setLeagueID] = useState(null);
   const [data, setData] = useState(null);
 
-  useEffect(() => {
-    if (router.isReady) {
-      setIsRouterReady(true);
-    }
-  }, [router.isReady]);
+  // useEffect(() => {
+  //   if (router.isReady) {
+  //     setIsRouterReady(true);
+  //   }
+  // }, [router.isReady]);
 
-  useEffect(() => {
-    if (isRouterReady && Object.keys(router.query).length !== 0) {
-      console.log("sorted", nbaData.response);
-    }
-    else {
-      return;
-    }
+  // useEffect(() => {
+  //   if (isRouterReady && Object.keys(router.query).length !== 0) {
+  //     console.log("sorted", nbaData.response);
+  //   }
+  //   else {
+  //     return;
+  //   }
 
-  }, [isRouterReady, router.query]);
+  // }, [isRouterReady, router.query]);
 
 
   // filter all Western Conference teams and sort by their standings
@@ -37,7 +37,7 @@ function NBAStandingsPage( {leagueData, nbaData }) {
     .filter(item => item.group.name === 'Eastern Conference')
     .sort((a, b) => a.position - b.position);
 
-  console.log(easternConferenceData);
+  // console.log(easternConferenceData);
 
 
   return (

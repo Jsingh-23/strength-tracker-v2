@@ -9,7 +9,7 @@ export default function Home() {
 
   const { data } = useSession();
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className={styles.container}>
