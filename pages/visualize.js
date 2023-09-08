@@ -3,7 +3,7 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import BarChart from "@/components/BarChart";
 import LineChart from "@/components/LineChart";
-import WeightLiftingDataform from "@/components/WeightLiftingDataform";
+import WeightLiftingDataform from "@/components/WeightLiftingDataForm";
 import { redirect } from 'next/navigation';
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
