@@ -41,7 +41,7 @@ function LeaguePage( {leagueData, nbaData }) {
   const leagueStandings = leagueData.response[0].league.standings[0];
   // console.log(leagueStandings);
 
-  if (leagueStandings === null) {
+  if (leagueData === null) {
     return <div> Loading... </div>;
   }
 

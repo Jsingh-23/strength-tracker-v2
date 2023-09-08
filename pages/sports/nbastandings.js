@@ -26,6 +26,9 @@ function NBAStandingsPage( {leagueData, nbaData }) {
 
   // }, [isRouterReady, router.query]);
 
+  if (nbaData === null) {
+    return <div> Loading... </div>;
+  }
 
   // filter all Western Conference teams and sort by their standings
   const westernConferenceData = nbaData.response[0]
