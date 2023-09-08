@@ -1,6 +1,6 @@
 import User from "@/models/User";
 
-export async function getUserById(userId) {
+export default async function getUserById(userId) {
   try {
     const user = await User.findById(userId);
     return user;
