@@ -24,6 +24,8 @@ function NBAStandingsPage( {leagueData, nbaData }) {
   //     return;
   //   }
 
+  //delete rhis
+
   // }, [isRouterReady, router.query]);
 
   if (nbaData === null) {
