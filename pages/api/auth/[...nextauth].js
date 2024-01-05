@@ -31,12 +31,14 @@ export const authOptions = {
   ],
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
+    // Persist Oauth access_token to token right after signin
     async jwt({ token, user }) {
       if (user) {
         token.id = user._id.toString(); // Convert ObjectID to string
       }
       return token;
     },
+    // Send properties to the client, like an access_token from a provider
     async session({ session, token }) {
       session.userId = token.sub;
       if (token?.id) {

@@ -106,8 +106,6 @@ const GoalsPage = () => {
     maxWeights.push(maxWeight);
   })
 
-
-
   // var exerciseMap = {};
   // liftingData.forEach((entry) => {
   //   var { exercise, weight } = entry;
