@@ -106,19 +106,6 @@ const GoalsPage = () => {
     maxWeights.push(maxWeight);
   })
 
-  // var exerciseMap = {};
-  // liftingData.forEach((entry) => {
-  //   var { exercise, weight } = entry;
-  //   if (!exerciseMap[exercise] || weight > exerciseMap[exercise].weight) {
-  //     exerciseMap[exercise] = {
-  //       exercise,
-  //       weight
-  //     };
-  //   }
-  // });
-
-  // console.log("map: ", exerciseMap);
-
     // when the form is submitted, I want to change my page's formSubmissions state
   // so that the charts are rerendered with the new data
   const handleFormSubmit = () => {
@@ -133,11 +120,9 @@ const GoalsPage = () => {
         label: 'My Max Weight',
         data: maxWeights,
         backgroundColor: [
-          'rgba(0,191,255, 0.6)',
-          'rgba(0,191,255, 0.6)',
-          'rgba(0,191,255, 0.6)',
+          '#3183BE'
         ],
-        borderWidth: 5,
+        borderWidth: 3,
         point: {
           backgroundColor: "black"
         }
@@ -145,9 +130,9 @@ const GoalsPage = () => {
       {
         label: 'Goal Weight',
         data: goalsData.map((goal) => goal.weight),
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
-        borderColor: "rgba(255, 99, 132, 1)",
-        borderWidth: 1,
+        backgroundColor: "#9FCBE2",
+        // borderColor: "rgba(255, 99, 132, 1)",
+        borderWidth: 3,
       }
     ],
   }
@@ -157,21 +142,18 @@ const GoalsPage = () => {
 
 if (status === "authenticated") {
   return (
-    <div>
+    <div className={styles.goals_container}>
 
-      <div className={styles.header}>
-        <h1> Goals </h1>
-      </div>
+        <h1 className={styles.header}> Goals </h1>
+        <p> Visualize the maximum amount you have lifted for each exercise,
+          and your goal for the corresponding exercise
+        </p>
 
-      <div className={styles.goal_charts}>
         <BarChart my_data={bar_chart_config} rep_data={[]} submissions_state = {formSubmissions}></BarChart>
         {/* <LineChart my_data={bar_chart_config} rep_data={[]}></LineChart> */}
 
-      </div>
 
-      <div className={styles.form_container}>
         <GoalsDataForm onFormSubmit={handleFormSubmit}></GoalsDataForm>
-      </div>
 
     </div>
   )

@@ -159,7 +159,7 @@ const TDEEForm = () => {
         {<p className="text-danger text-center"></p>}
         <div className="mb-3 text-center">
           <button className="btn btn-secondary btn-sm" type="submit"
-            >Upload</button>
+            >Calculate</button>
         </div>
       </form>
     </div>

@@ -27,96 +27,96 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
-      <div className="container-fluid">
+
+    <nav className={`${styles.navbar} navbar-expand-lg`}>
         <Link
-        className={styles.brand}
+        className={styles.logo}
         href="/"
         >
-          Strength Tracker
+          StrengthTracker
         </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            {/* if 'data.user' exists, then the Logout button is rendered, otherwise the Register and Login links are rendered */}
-            {data?.user ? (
-              <>
-              <li className="nav-item">
-                <Link className={styles.links} href="/weight">
-                  TDEE Calc
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link className={styles.links} href="/visualize">
-                  Visualizations
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link className={styles.links} href="/goals">
-                  Goals
-                </Link>
-              </li>
-
-              <li className="nav-item">
-              <Link className={styles.links} href="/showdata">
-                  All Data
-                </Link>
-              </li>
-
-              <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
-                <ul className="navbar-nav">
-                <li className="nav-item dropdown">
-                  <button className="btn btn-dark dropdown-toggle btn-sm" data-bs-toggle="dropdown" aria-expanded="false">
-                    Sports!
-                  </button>
-
-                  <ul className="dropdown-menu dropdown-menu-dark">
-                    <div className={styles.relative}>
-                      <Link href='/sports/nbastandings' className={`${styles.dropdownlink} text-center`}>  NBA </Link>
-                    </div>
-                    <div className={styles.relative}>
-                      <Link href='/sports/39' className={`${styles.dropdownlink} text-center`}> Premier League </Link>
-                    </div>
-                  </ul>
-                </li>
-                </ul>
-              </div>
-
-              <li className="nav-item">
-                <button className="btn btn-danger btn-sm" onClick={signOut}>
-                  Logout
-                </button>
-              </li>
-              </>
-            ) : (
-              <>
-                <li className="nav-item">
-                  <Link className="nav-link" href="/register">
-                    Register
+        
+          {/* if 'data.user' exists, then the logged-in navbar is rendered, otherwise the Register and Login links are rendered */}
+          {data?.user ? (
+            <> 
+              <ul className={`${styles.nav_links}`}>
+                <li className={styles.nav_item}>
+                  <Link className={styles.link} href="/weight">
+                    TDEE Calc
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" href="/login">
+
+                <li className={styles.nav_item}>
+                  <Link className={styles.link} href="/visualize">
+                    Visualizations
+                  </Link>
+                </li>
+
+                <li className={styles.nav_item}>
+                  <Link className={styles.link} href="/goals">
+                    Goals
+                  </Link>
+                </li>
+
+                <li className={styles.nav_item}>
+                <Link className={styles.link} href="/showdata">
+                    All Data
+                  </Link>
+                </li>
+
+
+                {/* Sports Drowndown Menu */}
+                <li className={styles.nav_item}>
+
+                    <ul className={`${styles.nav_item} ${styles.nav_dropdown}`}>
+                      <li className={styles.nav_dropdown}>
+                        <button className={`${styles.dropdown_button} dropdown-toggle`}   data-bs-toggle="dropdown" aria-expanded="false">
+                          Sports!
+                        </button>
+
+                        <ul className="dropdown-menu dropdown-menu-dark">
+                          <div className={styles.relative}>
+                            <Link href='/sports/nbastandings' className={`${styles.dropdownlink} text-center`}>  NBA </Link>
+                          </div>
+                          <div className={styles.relative}>
+                            <Link href='/sports/39' className={`${styles.dropdownlink} text-center`}> Premier League </Link>
+                          </div>
+                        </ul>
+                      </li>
+                    </ul>
+                    
+                  </li>
+                </ul>
+
+                {/* Logout Button */}
+                <button className={`${styles.logout_button} btn btn-danger btn-sm`} onClick={signOut}>
+                Logout
+                </button>
+
+            </>
+          ) : (
+
+            // If user is not logged in, then these navbar links will be rendered
+            <>
+              <ul className={styles.nav_links}>
+                <li className={styles.nav_item}>
+                  <Link className={`${styles.nav_links} ${styles.login_register_button}`} href="/login">
                     Login
                   </Link>
                 </li>
+                <li className={styles.nav_item}>
+                  <Link className={`${styles.nav_links} ${styles.login_register_button} ${styles.register_button}`} href="/register">
+                    Get Started
+                  </Link>
+                </li>
+                
+              </ul>
+
               </>
             )}
-          </ul>
-        </div>
-      </div>
+            
+
+        
     </nav>
   );
 };

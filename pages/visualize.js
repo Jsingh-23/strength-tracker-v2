@@ -7,6 +7,8 @@ import WeightLiftingDataform from "@/components/WeightLiftingDataForm";
 import { redirect } from 'next/navigation';
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { TypeAnimation } from 'react-type-animation';
+
 
 import initDB from "@/utils/db";
 import { getToken } from "next-auth/jwt";
@@ -129,12 +131,8 @@ const BenchPage = () => {
       {
         label: 'Weight',
         data: data_to_show,
-        backgroundColor: [
-          'rgba(0,191,255, 0.6)',
-          'rgba(0,191,255, 0.6)',
-          'rgba(0,191,255, 0.6)',
-        ],
-        borderWidth: 5,
+        backgroundColor: '#9EDBC5', 
+        borderWidth: 3,
         point: {
           backgroundColor: "black"
 
@@ -149,11 +147,7 @@ const BenchPage = () => {
       {
         label: 'Weight',
         data: data_to_show,
-        backgroundColor: [
-          'rgba(255,127,80, 0.6)',
-          'rgba(255,127,80, 0.6)',
-          'rgba(255,127,80, 0.6)',
-        ],
+        backgroundColor: '#9BEDFF',
         borderWidth: 5,
         point: {
           backgroundColor: "black"
@@ -194,15 +188,32 @@ const BenchPage = () => {
   if (status === "authenticated") {
 
     return (
-      <div>
-        <h1 className={styles.heading}> {currentExercise} Tracking!</h1>
+      <div className={styles.content_container}>
+        <h1 className={styles.heading}> {currentExercise} </h1>
+        {/* <h2 className={styles.subheading}> {chartDataType} </h2> */}
+        <TypeAnimation
+          style={{
+            marginBottom: '1rem',
+          }}
+          sequence={[
+            "Select the buttons to change exercises",
+            5000,
+            "Select the buttons to change chart data",
+            5000
+          ]}
+          speed={1}
+          deletionSpeed={1}
+          repeat={Infinity}
+        ></TypeAnimation>
+
 
         <div className={styles.exercise_buttons}>
           {exercises.map((exercise) => (
                 <button
                   key={exercise}
-                  className="btn btn-primary"
-                  style={{ margin: '0 5px' }}
+                  // className="btn btn-primary"
+                  // style={{ margin: '0 5px' }}
+                  className={styles.individual_buttons}
                   onClick={() => handleExerciseChange(exercise)}
                 >
                   {exercise}
@@ -210,15 +221,12 @@ const BenchPage = () => {
             ))}
         </div>
 
-        <div className={styles.chart_data_type_buttons}>
-          <button
-              className="btn btn-primary"
-              style={{ margin: '0 5px' }}
-              onClick={() => handleChartDataType()}
-            >
-              {chartDataType}
-          </button>
-        </div>
+        <button
+            className={styles.change_chart_type_button}
+            onClick={() => handleChartDataType()}
+          >
+            {chartDataType}
+        </button>
         <BarChart my_data={bar_chart_config} rep_data={repetitions_data}></BarChart>
         <LineChart my_data={line_chart_config} rep_data={repetitions_data}></LineChart>
         <WeightLiftingDataform onFormSubmit={handleFormSubmit}></WeightLiftingDataform>

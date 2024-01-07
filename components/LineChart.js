@@ -59,6 +59,7 @@ const LineChart = ({ my_data, rep_data }) => {
             line: {
               borderWidth: 2,
               fill: true,
+              tension:0.5
             }
           }
 

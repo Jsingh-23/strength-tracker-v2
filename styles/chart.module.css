@@ -1,5 +1,13 @@
 .chart-container {
-  width: 65%;
-  margin: auto;
+  width: 80vw;
+  padding: 1rem ;
+  background-color: white;
+  border-radius: 10px;
+  /* margin: auto; */
   /* border-style: solid; */
 }
+
+.chart-container {
+  margin-top: 1rem;
+}
+

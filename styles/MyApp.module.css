@@ -1,8 +1,12 @@
 /* MyApp.module.css */
 .container {
-  padding-top: 70px; /* Adjust the padding value as needed */
+  /* Adjust the padding value as needed */
+  /* padding-top: 70px;  */
 }
 
 .content {
-  margin-top: 20px; /* Adjust the margin value as needed */
+  /* padding-top: 7rem; Adjust the margin value as needed */
+  background-color: #F5F6F4;
+  margin-bottom: 2rem;
+
 }

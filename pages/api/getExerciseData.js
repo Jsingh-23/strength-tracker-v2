@@ -9,7 +9,6 @@ import { getToken } from "next-auth/jwt";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 
-
 initDB();
 
 export default async function handler(req, res) {
@@ -24,5 +23,4 @@ export default async function handler(req, res) {
   } catch (error) {
     res.status(500).json({ error: 'Unable to retrieve data' });
   }
-
 }

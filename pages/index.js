@@ -3,12 +3,13 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import image from "next/image"
+import image from "next/image";
+import { TypeAnimation } from 'react-type-animation';
+
 
 export default function Home() {
 
   const { data } = useSession();
-
   // console.log(data);
 
   return (
@@ -21,7 +22,26 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to Strength Tracker!
+          <TypeAnimation 
+            style={{
+              fontWeight: '550',
+            }}
+            cursor={true}
+            sequence={[
+              "Track Your Strength",
+              5000,
+              "Track Your Weight",
+              5000,
+              "Lift Beyond Limits",
+              5000,
+               "Empower Your Gains",
+              5000,
+            ]}
+            speed={1}
+            deletionSpeed={1}
+            repeat={Infinity}
+            className='typewriter_span'>
+          </TypeAnimation>
         </h1>
 
         <p className={styles.description}>
@@ -30,17 +50,17 @@ export default function Home() {
 
         <div className={styles.grid}>
           <div className={styles.card}>
-            <h2>Progress Logging &rarr;</h2>
+            <h2> <span><i class="bi bi-pencil-fill"></i></span> Progress Logging</h2>
             <p>Keep track of your weight lifting progress over time</p>
           </div>
 
           <div className={styles.card}>
-            <h2>Learn &rarr;</h2>
+            <h2><span><i class="bi bi-book"></i></span> Learn </h2>
             <p>Explore additional exercises and routines to help you on your journey</p>
           </div>
 
           <div className={styles.card}>
-            <h2>Visualize &rarr;</h2>
+            <h2> <span><i class="bi bi-bar-chart-fill"></i> </span>Visualize</h2>
             <p>Visualize your weight lifting progress through various charts </p>
           </div>
         </div>

@@ -110,14 +110,14 @@ const WeightLiftingDataform = ( { onFormSubmit }) => {
   // };
 
   return (
-    <div className={`card bg-light ${styles.container}`}>
+    <div className={`card bg-white ${styles.container}`}>
       {/* Form for Uploading Weightlifting Data */}
       <form
       action="/api/addLiftingData"
       method="post"
       onSubmit={(event) => handleSubmit(event)}
       style={{ maxWidth: "576px", margin: "auto" }}>
-      <h3 className="text-center my-5">Upload Your Lifts!</h3>
+      <h3 className="text-center my-5">Upload Your Lifts</h3>
 
       {/* Date Input */}
       <div className="mb-3">

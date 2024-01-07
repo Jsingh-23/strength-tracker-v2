@@ -42,6 +42,7 @@ function LeaguePage( {leagueData, nbaData }) {
       return <div> Loading... </div>;
   }
 
+  console.log(leagueData);
   const leagueStandings = leagueData.response[0].league.standings[0];
   // console.log(leagueStandings);
 

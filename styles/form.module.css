@@ -1,21 +1,52 @@
 .container {
   width: 50%;
-  margin: auto;
+  /* margin: auto; */
   background-color: gray;
+  margin-top: 1rem;
+  border-radius: 10px;
+  border-color: white;
+}
+
+.content_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .heading {
   text-align: center;
+  font-weight: 700;
+  margin-top: 4rem;
+  /* margin-bottom: 3rem ; */
+}
+
+.subheading {
+  text-align: center;
+  font-weight: 100;
+  font-size: 100%;
 }
 
 .exercise_buttons {
-  text-align: center;
-  margin: 1%;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  /* text-align: center;
+  margin: 1%; */
+  /* background-color:#826DEC ; */
 }
 
-.chart_data_type_buttons {
-  text-align: center;
-  margin-bottom: 1%;
+.individual_buttons {
+  border-radius: 5px;
+  background-color: #826DEC;
+  color: white;
+}
+
+.change_chart_type_button {
+  border-radius: 5px;
+  background-color: #36454F;
+  color: white;
 }
 
 
