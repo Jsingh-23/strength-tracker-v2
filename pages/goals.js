@@ -106,6 +106,8 @@ const GoalsPage = () => {
     maxWeights.push(maxWeight);
   })
 
+  console.log('maxs: ', maxWeights);
+
     // when the form is submitted, I want to change my page's formSubmissions state
   // so that the charts are rerendered with the new data
   const handleFormSubmit = () => {
@@ -117,7 +119,7 @@ const GoalsPage = () => {
     labels: chart_labels,
     datasets: [
       {
-        label: 'My Max Weight',
+        label: 'My Max',
         data: maxWeights,
         backgroundColor: [
           '#3183BE'
@@ -128,7 +130,7 @@ const GoalsPage = () => {
         }
       },
       {
-        label: 'Goal Weight',
+        label: 'Goal',
         data: goalsData.map((goal) => goal.weight),
         backgroundColor: "#9FCBE2",
         // borderColor: "rgba(255, 99, 132, 1)",

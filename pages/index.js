@@ -32,6 +32,8 @@ export default function Home() {
               5000,
               "Track Your Weight",
               5000,
+              "Track Your Progression",
+              5000,
               "Lift Beyond Limits",
               5000,
                "Empower Your Gains",
@@ -66,17 +68,27 @@ export default function Home() {
         </div>
 
         <div className={styles.info}>
-        <h2>We&apos;ll help you track your progress and optimize your workouts based on your input and your favorite routines.</h2>
+        <h2 className={styles.subheader} >We&apos;ll help you track your progress and optimize your workouts based on your input and your favorite routines.</h2>
         </div>
 
-        <div className={`card bg-light ${styles.imageContainer}`}>
-          <img src="/deadlift.jpeg" className={styles.imageFit}>
+        <div className={`${styles.imageContainer}`}>
+          <img src="/barchart_example.PNG" className={styles.imageFit}>
 
           </img>
         </div>
 
         <div className={styles.info}>
-        <h2>Data visualization, made easy for you</h2>
+        <h2 className={styles.subheader} >Set goals for yourself</h2>
+        </div>
+
+        <div className={`${styles.imageContainer}`}>
+          <img src="/goal_chart_example.PNG" className={styles.imageFit}>
+
+          </img>
+        </div>
+
+        <div className={styles.info}>
+        <h2 className={styles.subheader}>Data visualization, made easy for you</h2>
         </div>
 
         {/* only render this if the user is not logged in */}
