@@ -1,4 +1,6 @@
 import { Line } from "react-chartjs-2";
+import { Doughnut, Pie } from "react-chartjs-2";
+
 // import styles from '@/styles/chart.module.css';
 import styles from '@/styles/overview.module.css';
 
@@ -42,8 +44,11 @@ const Overview = ({ my_data, options, num_workouts, total_weight_lifted, total_r
                     <button className={styles.widget_button} disabled={true} > </button>
                     <p className={styles.text}> <span className={styles.widget_label}> Heaviest: </span> {heaviest} </p>
                 </div>
-
             </div>
+
+        </div>
+        
+        <div className={styles.goals_overview_container}>
 
         </div>
         

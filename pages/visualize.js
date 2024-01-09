@@ -102,6 +102,8 @@ const BenchPage = () => {
 
 
   
+
+  // calculations for displaying stats on Overview Display
   let total_weight_lifted = 0;
   let total_reps = 0;
   let heaviest = 0;
@@ -126,7 +128,7 @@ const BenchPage = () => {
     }
   });
 
-  console.log("goals: ", goalsData);
+  // console.log("goals: ", goalsData);
 
 
 
@@ -346,6 +348,7 @@ const BenchPage = () => {
           font: {
             weight: "bold"
           },
+          precision: 0,
         },
         grid: {
           color: '#A9A9A9',
@@ -434,12 +437,16 @@ const BenchPage = () => {
             ))}
         </div>
 
-        <button
+        <div className={styles.change_chart_type_button_container}>
+          <button
             className={styles.change_chart_type_button}
             onClick={() => handleChartDataType()}
           >
             {chartDataType}
-        </button>
+          </button>
+        </div>
+
+        
         <BarChart my_data={bar_chart_config} rep_data={repetitions_data}></BarChart>
         <LineChart my_data={line_chart_config} options={line_chart_options}></LineChart>
         <WeightLiftingDataform onFormSubmit={handleFormSubmit}></WeightLiftingDataform>

@@ -35,8 +35,19 @@ export default async function handler(req, res) {
     var curr_user = await User.findById(userId).exec();
     const liftData = {exercise, weight, repetitions, date};
 
-    console.log("lift data: ", liftData);
 
+    // find the current user's goalsData to update their heaviest weight lifted for corresponding exercise
+    var curr_user_goals = curr_user.goalsData.find(goal => goal.exercise === liftData.exercise);
+    console.log(curr_user);
+    // if the user has set a new PR, update their PR (goalsData.currentMax)
+    if (liftData.weight > curr_user_goals.current_max) {
+      curr_user_goals.current_max = liftData.weight;
+    }
+
+    // console.log("lift data: ", liftData);
+    // console.log('break');
+
+    // add this dataset to user's liftingData field
     curr_user.liftingData.push(liftData);
     await curr_user.save();
     console.log("is this it...");

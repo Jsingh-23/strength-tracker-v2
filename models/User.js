@@ -34,7 +34,8 @@ const userSchema = new mongoose.Schema(
       {
         repetitions: {type: Number},
         exercise: { type: String},
-        weight: { type: Number}
+        weight: { type: Number},
+        current_max: { type: Number}
       }
     ],
   }

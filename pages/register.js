@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
+import { signIn } from "next-auth/react";
 
 const Register = () => {
   const router = useRouter();
@@ -32,10 +33,17 @@ const Register = () => {
       },
       body: JSON.stringify(values),
     });
+
     const result = await res.json();
     if (res.ok) {
-      setValues({ name: "", email: "", password: "" });
-      router.replace("/");
+      const login_creds = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+      router.push("/");
+      // setValues({ name: "", email: "", password: "" });
+      // router.replace("/");
     } else {
       setError(result.error);
     }

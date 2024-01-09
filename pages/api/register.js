@@ -11,7 +11,17 @@ export default async function handler(req, res) {
     if (user) {
       return res.status(400).json({ error: "User already exists" });
     }
-    user = new User({ name, email, password });
+    user = new User({ 
+      name, 
+      email, 
+      password,
+      goalsData: [
+        { exercise: 'Bench Press', current_max: 0},
+        { exercise: 'Deadlift', current_max: 0},
+        { exercise: 'Squat', current_max: 0},
+      ] });
+
+    console.log(user);
     await user.save();
 
     res.json({

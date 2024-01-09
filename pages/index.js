@@ -52,17 +52,17 @@ export default function Home() {
 
         <div className={styles.grid}>
           <div className={styles.card}>
-            <h2> <span><i class="bi bi-pencil-fill"></i></span> Progress Logging</h2>
+            <h2> <span><i className="bi bi-pencil-fill"></i></span> Progress Logging</h2>
             <p>Keep track of your weight lifting progress over time</p>
           </div>
 
           <div className={styles.card}>
-            <h2><span><i class="bi bi-book"></i></span> Learn </h2>
+            <h2><span><i className="bi bi-book"></i></span> Learn </h2>
             <p>Explore additional exercises and routines to help you on your journey</p>
           </div>
 
           <div className={styles.card}>
-            <h2> <span><i class="bi bi-bar-chart-fill"></i> </span>Visualize</h2>
+            <h2> <span><i className="bi bi-bar-chart-fill"></i> </span>Visualize</h2>
             <p>Visualize your weight lifting progress through various charts </p>
           </div>
         </div>
@@ -96,7 +96,7 @@ export default function Home() {
           <div className={styles.info}>
           <h1>Want to get started now?</h1>
           <h3> Register now and get started! </h3>
-          <Link href="/register" class="btn btn-primary"> Register </Link>
+          <Link href="/register" className="btn btn-primary"> Register </Link>
           </div>
         )}
 

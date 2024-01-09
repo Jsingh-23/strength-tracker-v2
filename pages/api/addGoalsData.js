@@ -35,6 +35,18 @@ export default async function handler(req, res) {
     var curr_user = await User.findById(userId).exec();
     var curr_user_goals = curr_user.goalsData;
 
+    console.log("curr_user_goals", curr_user_goals);
+
+    // var curr_user_all_lifting_data = curr_user.liftingData();
+
+    // let heaviest = 0;
+    // curr_user_all_lifting_data.forEach(function (arrayItem) {
+    //   if (arrayItem.weight > heaviest) {
+    //     heaviest = arrayItem.weight;
+    //   }
+    // });
+
+
     // console.log("hey");
 
     const goals = {exercise, weight, repetitions};
@@ -45,7 +57,8 @@ export default async function handler(req, res) {
       console.log("this exercise already has a goal!!!");
       const index = curr_user.goalsData.findIndex(obj => obj.exercise === exercise);
       if (index !== -1) {
-        curr_user.goalsData[index] = goals;
+        curr_user.goalsData[index].weight = goals.weight;
+        curr_user.goalsData[index].repetitions = goals.repetitions;
         await curr_user.save();
         res.status(200).json("Submitted!");
         return;
@@ -55,7 +68,7 @@ export default async function handler(req, res) {
     console.log("goals data: ", goals);
     // console.log(curr_user);
 
-    curr_user.goalsData.push(goals);
+    // curr_user.goalsData.push(goals);
     await curr_user.save();
     console.log("is this it...");
 

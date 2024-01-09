@@ -30,7 +30,7 @@
 .exercise_buttons {
   width: 50%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-bottom: 1rem;
   /* text-align: center;
   margin: 1%; */
@@ -41,6 +41,13 @@
   border-radius: 5px;
   background-color: #826DEC;
   color: white;
+}
+
+.change_chart_type_button_container {
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+
 }
 
 .change_chart_type_button {

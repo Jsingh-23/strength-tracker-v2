@@ -15,6 +15,7 @@ import { getToken } from "next-auth/jwt";
 
 const GoalsPage = () => {
 
+  const router = useRouter();
   const [liftingData, setLiftingData] = useState(null);
   const [exercises, setExercises] = useState([]);
   const [currentExercise, setCurrentExercise] = useState('Bench Press');
@@ -106,7 +107,8 @@ const GoalsPage = () => {
     maxWeights.push(maxWeight);
   })
 
-  console.log('maxs: ', maxWeights);
+  // console.log("goals data: ", goalsData);
+  // console.log('maxs: ', maxWeights);
 
     // when the form is submitted, I want to change my page's formSubmissions state
   // so that the charts are rerendered with the new data

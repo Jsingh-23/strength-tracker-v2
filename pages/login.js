@@ -50,7 +50,7 @@ const Login = () => {
       return;
     }
 
-    setValues({ email: "", password: "" });
+    // setValues({ email: "", password: "" });
     router.push("/");
   };
 
