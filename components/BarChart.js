@@ -26,7 +26,8 @@ const BarChart = ({ my_data, rep_data }) => {
       <h2 style={{ textAlign: "center" }}></h2>
       <Bar
         data={my_data}
-        options={{
+        options={
+          {
           plugins: {
               tooltip: {
                 enabled: true,
@@ -40,11 +41,11 @@ const BarChart = ({ my_data, rep_data }) => {
               },
               legend: {
                 display: rep_data.length === 0,
-              }
-            },
-            title: {
-              display: false,
-              text: "Progression Since Beginning"
+              },
+              title: {
+                display: false,
+                text: "Progression Since Beginning"
+              },
             },
             legend: {
               display: false

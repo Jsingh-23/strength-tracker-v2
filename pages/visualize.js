@@ -88,7 +88,8 @@ const BenchPage = () => {
     router.push("/login");
   }
 
-  if (liftingData === null) {
+  // if any of the relevant data hasn't been loaded yet, show a loading screen
+  if (liftingData === null || goalsData === null || exercises === null) {
       return <div> Loading... </div>;
   }
 
@@ -128,6 +129,8 @@ const BenchPage = () => {
     }
   });
 
+  // console.log("liftingdata: ", liftingData);
+  // console.log("exercises: ", exercises);
   // console.log("goals: ", goalsData);
 
 
@@ -233,7 +236,7 @@ const BenchPage = () => {
           font: {
             weight: "bold",
             size: 15,
-          }
+          },
         }
       },
     },
@@ -403,6 +406,8 @@ const BenchPage = () => {
           total_weight_lifted={total_weight_lifted}
           total_reps={total_reps}
           heaviest={heaviest}
+          my_exercises={exercises}
+          goals_data = {goalsData}
           >
         </Overview>
 
