@@ -154,9 +154,6 @@ if (status === "authenticated") {
         </p>
 
         <BarChart my_data={bar_chart_config} rep_data={[]} submissions_state = {formSubmissions}></BarChart>
-        {/* <LineChart my_data={bar_chart_config} rep_data={[]}></LineChart> */}
-
-
         <GoalsDataForm onFormSubmit={handleFormSubmit}></GoalsDataForm>
 
     </div>

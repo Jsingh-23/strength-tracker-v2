@@ -5,12 +5,46 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import image from "next/image";
 import { TypeAnimation } from 'react-type-animation';
+import { useEffect, useState, useRef } from 'react';
 
 
 export default function Home() {
 
   const { data } = useSession();
-  // console.log(data);
+  const [index, setIndex] = useState(0);
+  const timeoutRef = useRef(null);
+
+  const images = [ 'st_test_img.png', 
+                   'st_line.png',
+                   'st_bar.png'
+  ]
+  const delay = 1000000;
+
+
+  // resetTimeout will be used to clear Timeout, and it will be called everytime the index of the
+  // slide changes in our slideshow
+  function resetTimeout() {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  }
+
+  useEffect(() => {
+    resetTimeout();
+    timeoutRef.current = setTimeout(
+      () =>
+        setIndex((prevIndex) =>
+          prevIndex === images.length - 1 ? 0 : prevIndex + 1
+        ),
+      delay
+    );
+
+    return () => {
+      resetTimeout();
+    };
+  }, [index]);
+
+
 
   return (
     <div className={styles.container}>
@@ -46,9 +80,12 @@ export default function Home() {
           </TypeAnimation>
         </h1>
 
-        <p className={styles.description}>
-          Get started by uploading your <Link className={styles.link} href="/showdata">lifting data!</Link>
-        </p>
+        
+        {data !== null ? null : (
+          <p className={styles.description}>
+            Get started by uploading your <Link className={styles.link} href="/showdata">lifting data!</Link>
+          </p>
+        )}
 
         {/* Progress Logging / Learn / Visualize */}
         <div className={styles.grid}>
@@ -86,29 +123,36 @@ export default function Home() {
           </div>
         </div>
 
-        <div className={`${styles.info} ${styles.slideshow_container}`}>
-          <div className={styles.slideshow}>
+        <div className={`${styles.info} ${styles.slideshow_info}`}>
+          <div className={styles.slideshow_container}>
             <p className={styles.slideshow_p}> Answers for everything </p>
             <h2 className={styles.slideshow_subheader}>Data visualization, made easy for you</h2>
             
-            <div className={styles.slideshow_actual_container}>
-
-              <div className={styles.slideshow_image_container}>
-                <img src="/goal_chart_example.PNG" className={styles.imageFit}>
-                </img>
+            {/* start of slideshow */}
+            <div className={styles.slideshow}>
+              <div className={styles.slideshowSlider} style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }} >
+                {images.map((imageSource, index) => (
+                  <div className={styles.slide} key={index}>
+                    <img className={styles.slideshow_img} src={imageSource}></img>
+                  </div>
+                ))}
               </div>
 
-              <div className={styles.slideshow_selectors_container}>
-                <p> fuck urself</p>
-                <p> hi</p>
+              {/* Slideshow Buttons */}
+              <div className="slideshowDots">
+                {images.map((_, idx) => (
+                  <div key={idx} 
+                  className={`${styles.slideshowDot} ${index === idx ? styles.active : ""}`}
+                  onClick={() => {
+                    setIndex(idx);
+                  }}
+                  ></div>
+                ))}
               </div>
 
             </div>
-
-            {/* <div className={`${styles.imageContainer}`}>
-              <img src="/goal_chart_example.PNG" className={styles.imageFit}>
-                </img>
-            </div> */}
+            {/* end of slideshow */}
+            
           </div>
 
         </div>

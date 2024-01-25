@@ -41,6 +41,9 @@ const BarChart = ({ my_data, rep_data }) => {
               },
               legend: {
                 display: rep_data.length === 0,
+                labels: {
+                  color: 'white',
+                }
               },
               title: {
                 display: false,
