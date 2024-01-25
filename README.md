@@ -1,15 +1,12 @@
 
 ## Getting Started
 
-First, run the development server:
+StrengthTracker application for logging and visualizing your gym progression. Use the following
+login to view example data.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Email: karan@karan.com
+Password: karan123
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 
 
