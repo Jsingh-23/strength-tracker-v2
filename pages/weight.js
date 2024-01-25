@@ -65,7 +65,10 @@ const WeightPage = () => {
   const { data: session, status } = useSession();
   if (status === "authenticated") {
     return (
-      <TDEEForm></TDEEForm>
+      <div className={styles.content_container}> 
+        <TDEEForm></TDEEForm> 
+      </div>
+     
       )
   }
 

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useSession } from "next-auth/react";
-// import { useForm } from 'react-hook-form';
 import styles from '@/styles/form.module.css';
 
 
@@ -54,19 +53,7 @@ const WeightLiftingDataform = ( { onFormSubmit }) => {
       getData();
     }, [exerciseName]); // end of useEffect()
 
-  // console.log("exercises: " + exercises);
-  // console.log("form vals: ", formValues);
-
-
-
-
-
-
   const handleSubmit = async (event) => {
-
-    // console.log("e: " + event);
-    // console.log("data: " + data.size);
-
     event.preventDefault();
 
     setFormValues({
@@ -88,7 +75,6 @@ const WeightLiftingDataform = ( { onFormSubmit }) => {
         headers: { 'Content-Type': 'application/json'},
         body: jsonData,
       });
-      // console.log("res: ", res);
       if (res.ok) {
         onFormSubmit();
         console.log("ok!");
@@ -99,15 +85,9 @@ const WeightLiftingDataform = ( { onFormSubmit }) => {
 
       }
     } catch (error) {
-      // console.log(error);
-      // console.log("here!");
       console.log('Failed to add weightlifting data.', error);
     }
   };
-
-  // const handleButtonClick = () => {
-  //   onFormSubmit();
-  // };
 
   return (
     <div className={`card bg-white ${styles.container}`}>

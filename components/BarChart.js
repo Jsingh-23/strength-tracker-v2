@@ -5,7 +5,7 @@ import 'chartjs-plugin-datalabels';
 const BarChart = ({ my_data, rep_data }) => {
 
   // if rep_data has length 0, then this means I am rendering this BarChart component
-  // on the Goals page
+  // on the Goals page and the barchart should be a stacked barchart
   if (rep_data.length === 0) {
     console.log("empty rep data");
     var callback_config = {};
@@ -20,6 +20,8 @@ const BarChart = ({ my_data, rep_data }) => {
       }
     }
   }
+
+
 
   return (
     <div className={styles["chart-container"]}>

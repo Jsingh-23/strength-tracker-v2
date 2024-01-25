@@ -93,16 +93,12 @@ const BenchPage = () => {
       return <div> Loading... </div>;
   }
 
-
   // sort the liftingData by date
   liftingData.sort((a, b) => {
     const dateA = new Date(a.date);
     const dateB = new Date(b.date);
     return dateA - dateB;
   });
-
-
-  
 
   // calculations for displaying stats on Overview Display
   let total_weight_lifted = 0;
@@ -115,10 +111,6 @@ const BenchPage = () => {
       heaviest = arrayItem.weight;
     }
   })
-  
-
-    
-
 
   // create an array of weights, and corresponding dates
   liftingData.forEach(function (arrayItem) {
@@ -128,12 +120,6 @@ const BenchPage = () => {
       repetitions_data.push(arrayItem.repetitions);
     }
   });
-
-  // console.log("liftingdata: ", liftingData);
-  // console.log("exercises: ", exercises);
-  // console.log("goals: ", goalsData);
-
-
 
   // format the date labels so that they are more readable
   const formatted_labels = chart_labels.map(dateString => {
@@ -412,7 +398,6 @@ const BenchPage = () => {
         </Overview>
 
         <h1 className={styles.heading}> {currentExercise} </h1>
-        {/* <h2 className={styles.subheading}> {chartDataType} </h2> */}       
 
         <TypeAnimation
             style={{

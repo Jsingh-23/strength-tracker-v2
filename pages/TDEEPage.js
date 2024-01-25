@@ -65,7 +65,7 @@ const TDEEPage = () => {
         <h1 className={styles.header}> TDEE </h1>
       </div>
 
-      <div className={`card bg-light ${styles.card_container}`}>
+      <div className={styles.card_container}>
         <div className={styles.text_center}>
           <p>
             <span className={styles.bmr}>{BMR}</span> Calories Per Day
