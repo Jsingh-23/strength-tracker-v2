@@ -50,6 +50,7 @@ export default function Home() {
           Get started by uploading your <Link className={styles.link} href="/showdata">lifting data!</Link>
         </p>
 
+        {/* Progress Logging / Learn / Visualize */}
         <div className={styles.grid}>
           <div className={styles.card}>
             <h2> <span><i className="bi bi-pencil-fill"></i></span> Progress Logging</h2>
@@ -67,36 +68,57 @@ export default function Home() {
           </div>
         </div>
 
-        <div className={styles.info}>
-        <h2 className={styles.subheader} >We&apos;ll help you track your progress and optimize your workouts based on your input and your favorite routines.</h2>
-        </div>
 
-        <div className={`${styles.imageContainer}`}>
-          <img src="/barchart_example.PNG" className={styles.imageFit}>
-
-          </img>
-        </div>
 
         <div className={styles.info}>
-        <h2 className={styles.subheader} >Set goals for yourself</h2>
-        </div>
-
-        <div className={`${styles.imageContainer}`}>
-          <img src="/goal_chart_example.PNG" className={styles.imageFit}>
-
-          </img>
+          <h2 className={styles.subheader} >We&apos;ll help you track your progress and optimize your workouts based on your input and your favorite routines.</h2>
+          <div className={`${styles.imageContainer}`}>
+            <img src="/barchart_example.PNG" className={styles.imageFit}>
+            </img>
+          </div>
         </div>
 
         <div className={styles.info}>
-        <h2 className={styles.subheader}>Data visualization, made easy for you</h2>
+          <h2 className={styles.subheader} >Set goals for yourself</h2>
+          <div className={`${styles.imageContainer}`}>
+            <img src="/goal_chart_example.PNG" className={styles.imageFit}>
+            </img>
+          </div>
+        </div>
+
+        <div className={`${styles.info} ${styles.slideshow_container}`}>
+          <div className={styles.slideshow}>
+            <p className={styles.slideshow_p}> Answers for everything </p>
+            <h2 className={styles.slideshow_subheader}>Data visualization, made easy for you</h2>
+            
+            <div className={styles.slideshow_actual_container}>
+
+              <div className={styles.slideshow_image_container}>
+                <img src="/goal_chart_example.PNG" className={styles.imageFit}>
+                </img>
+              </div>
+
+              <div className={styles.slideshow_selectors_container}>
+                <p> fuck urself</p>
+                <p> hi</p>
+              </div>
+
+            </div>
+
+            {/* <div className={`${styles.imageContainer}`}>
+              <img src="/goal_chart_example.PNG" className={styles.imageFit}>
+                </img>
+            </div> */}
+          </div>
+
         </div>
 
         {/* only render this if the user is not logged in */}
         {data === null && (
-          <div className={styles.info}>
-          <h1>Want to get started now?</h1>
-          <h3> Register now and get started! </h3>
-          <Link href="/register" className="btn btn-primary"> Register </Link>
+          <div className={styles.info2}>
+          <h1 className={styles.info2_text}>Want to get started now?</h1>
+          <h3 className={styles.info2_text}> Register now and get started! </h3>
+          <Link href="/register" className={`btn btn-primary ${styles.register_button}`}> Register </Link>
           </div>
         )}
 

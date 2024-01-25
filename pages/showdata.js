@@ -177,7 +177,7 @@ const ShowData = () => {
                   ref={exerciseInputRef}
                   required>
                   </input>
-                  <button className="btn btn-secondary btn-sm">Upload</button>
+                  <button className="btn btn-secondary btn-sm"> Upload</button>
                 </div>
               </form>
             </div>

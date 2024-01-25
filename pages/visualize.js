@@ -177,67 +177,6 @@ const BenchPage = () => {
     ],
   }
 
-  var line_chart_options = {
-    plugins: {
-      tooltip: {
-        enabled: repetitions_data.length > 0,
-        callbacks: {
-          label: (tooltipItem, data) => {
-            const dataIndex = tooltipItem.dataIndex;
-            // const repetitionsData = rep_data;
-            var labels = [`Weight: ${bar_chart_config.datasets[0].data[dataIndex]}`, `Repetitions: ${repetitions_data[dataIndex]}`];
-            return labels;
-          }
-        }
-      },
-      title: {
-        display: false,
-        text: "Progression Since Beginning"
-      },
-      legend: {
-        display: false
-      }
-    },
-    scales: {
-      x: {
-        title: {
-          display: true,
-          text: "Date",
-          font: {
-            weight: "bold",
-            size: 15,
-          }
-        },
-        ticks: {
-          callback: function(val, index) {
-            // Hide every 2nd tick label
-            return index % 2 === 0 ? this.getLabelForValue(val) : '';
-          },
-        },
-      },
-      y: {
-        title: {
-          display: true,
-          text: "Weight (Lbs)",
-          font: {
-            weight: "bold",
-            size: 15,
-          },
-        }
-      },
-    },
-    elements: {
-      point: {
-        backgroundColor: 'white'
-      },
-      line: {
-        borderWidth: 2,
-        fill: true,
-        tension:0.5
-      }
-    }
-  }
-
   // All the data to create the overview chart is aggregated and sorted here
   // function to retrieve total number of workouts per date
   const totalWorkoutsData = () => {
@@ -438,7 +377,7 @@ const BenchPage = () => {
 
         
         <BarChart my_data={bar_chart_config} rep_data={repetitions_data}></BarChart>
-        <LineChart my_data={line_chart_config} options={line_chart_options}></LineChart>
+        <LineChart my_data={line_chart_config} rep_data={repetitions_data} ></LineChart>
         <WeightLiftingDataform onFormSubmit={handleFormSubmit}></WeightLiftingDataform>
 
       </div>

@@ -21,8 +21,6 @@ const BarChart = ({ my_data, rep_data }) => {
     }
   }
 
-
-
   return (
     <div className={styles["chart-container"]}>
       <h2 style={{ textAlign: "center" }}></h2>
@@ -49,26 +47,29 @@ const BarChart = ({ my_data, rep_data }) => {
                 text: "Progression Since Beginning"
               },
             },
-            legend: {
-              display: false
-            },
+
+          legend: {
+            display: false
+          },
           scales: {
             x: {
               stacked: rep_data.length === 0,
-              title: {
-                display: true,
-                text: "Date",
-                font: {
-                  weight: "bold",
-                  size: 20,
-                }
-              }
+              ticks: {
+                color: 'white',
+                // callback: function(val, index) {
+                //   // Hide every 2nd tick label
+                //   return index % 2 === 0 ? this.getLabelForValue(val) : '';
+                // },
+              },
             },
             y: {
               stacked: false,
-              // stacked: rep_data.length === 0,
+              ticks: {
+                color: 'white',
+              },
               title: {
                 display: true,
+                color: 'white',
                 text: "Weight (Lbs)",
                 font: {
                   weight: "bold",
@@ -82,6 +83,5 @@ const BarChart = ({ my_data, rep_data }) => {
     </div>
   );
 };
-
 
 export default BarChart;
