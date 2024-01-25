@@ -32,12 +32,6 @@ const Overview = ({ my_data, options, num_workouts, total_weight_lifted, total_r
         return calculatePercentage( exerciseobj.data[0], get_goal_weight(exercise));
     }
 
-    const benchobj = filterExerciseFromGoalsData('Bench Press');
-
-    const squatobj = filterExerciseFromGoalsData('Squat');
-
-    const deadliftobj = filterExerciseFromGoalsData('Deadlift');
-
     // set up chart data based on inputted exercise
     const exercise_data = (exercise) => {
         return {
@@ -77,9 +71,9 @@ const Overview = ({ my_data, options, num_workouts, total_weight_lifted, total_r
                             // progress was more easily visible on the donut chart. This was done by showing the difference between my current PR and my goal PR
                             // as the smaller dataset on the donut chart
                             if (tooltipItem['dataIndex'] === 0) {
-                                return " " + bench_data['datasets'][0]['data'][tooltipItem['dataIndex']] + " pounds";
+                                return " " + exercise_data(exercise)['datasets'][0]['data'][tooltipItem['dataIndex']] + " pounds";
                             } else if (tooltipItem['dataIndex'] === 1) {
-                                let total = bench_data['datasets'][0]['data'][0] + bench_data['datasets'][0]['data'][1]
+                                let total = exercise_data(exercise)['datasets'][0]['data'][0] + exercise_data(exercise)['datasets'][0]['data'][1]
                                 return " " + total + " pounds";
                             }
                         },
@@ -124,7 +118,7 @@ const Overview = ({ my_data, options, num_workouts, total_weight_lifted, total_r
 
                 <div className={styles.right_widget}>
                     <button className={styles.widget_button} disabled={true} > </button>
-                    <p className={styles.text}> <span className={styles.widget_label}> Heaviest: </span> {heaviest} </p>
+                    <p className={styles.text}> <span className={styles.widget_label}> Heaviest: </span> {heaviest} pounds </p>
                 </div>
             </div>
 
