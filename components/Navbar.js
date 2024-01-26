@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import styles from "../styles/navbar.module.css";
-
+import {useState} from "react";
 
 const Navbar = () => {
 
@@ -14,6 +14,8 @@ const Navbar = () => {
 
   // useSession hook to ensure proper navbar display, depending on whether user is logged in or not.
   const { data } = useSession();
+  const [showModal, setShowModal] = useState(false);
+
 
   // different football leagues
   const leagues = {
@@ -42,7 +44,7 @@ const Navbar = () => {
               <ul className={`${styles.nav_links}`}>
                 <li className={styles.nav_item}>
                   <Link className={styles.link} href="/weight">
-                    TDEE Calc
+                    TDEE Calculator
                   </Link>
                 </li>
 

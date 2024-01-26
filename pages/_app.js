@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import Navbar from "@/components/Navbar";
 import Script from "next/script";
+import {NextUIProvider} from '@nextui-org/react'
 import { SessionProvider } from "next-auth/react";
 
 import Chart from "chart.js/auto";
@@ -46,21 +47,23 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   }, []);
 
   return (
-    <main>
-      <SessionProvider session={session}>
-        <div className={styles.container}>
-          <Navbar />
-          <div className={styles.content}>
-            <Component {...pageProps} leagueData={leagueData} nbaData={nbaData}/>
+    <NextUIProvider>
+      <main>
+        <SessionProvider session={session}>
+          <div className={styles.container}>
+            <Navbar />
+            <div className={styles.content}>
+              <Component {...pageProps} leagueData={leagueData} nbaData={nbaData}/>
+            </div>
           </div>
-        </div>
-        <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" />
-        <Script
-        type="module"
-        src="https://widgets.api-sports.io/2.0.3/widgets.js"
-      />
-      </SessionProvider>
-    </main>
+          <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" />
+          <Script
+          type="module"
+          src="https://widgets.api-sports.io/2.0.3/widgets.js"
+        />
+        </SessionProvider>
+      </main>
+    </NextUIProvider>
   );
 }
 

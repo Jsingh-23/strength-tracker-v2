@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
+// import styles from "styles/register.module.css";
 
 const Register = () => {
   const router = useRouter();

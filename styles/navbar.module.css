@@ -33,7 +33,14 @@
 }
 
 .link {
-  font-weight: 700;
+  font-weight: bold;
+  white-space: nowrap;
+}
+.link:hover {
+  background-color: black;
+  border-radius: 10px;
+  color: white;
+  padding: 0.5rem;
 }
 
 .nav_item {

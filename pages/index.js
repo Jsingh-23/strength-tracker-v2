@@ -44,8 +44,6 @@ export default function Home() {
     };
   }, [index]);
 
-
-
   return (
     <div className={styles.container}>
       <Head>
@@ -80,7 +78,7 @@ export default function Home() {
           </TypeAnimation>
         </h1>
 
-        
+        {/* if the user is logged in, do not render this */}
         {data !== null ? null : (
           <p className={styles.description}>
             Get started by uploading your <Link className={styles.link} href="/showdata">lifting data!</Link>
@@ -108,19 +106,12 @@ export default function Home() {
 
 
         <div className={styles.info}>
-          <h2 className={styles.subheader} >We&apos;ll help you track your progress and optimize your workouts based on your input and your favorite routines.</h2>
           <div className={`${styles.imageContainer}`}>
             <img src="/barchart_example.PNG" className={styles.imageFit}>
             </img>
           </div>
-        </div>
-
-        <div className={styles.info}>
-          <h2 className={styles.subheader} >Set goals for yourself</h2>
-          <div className={`${styles.imageContainer}`}>
-            <img src="/goal_chart_example.PNG" className={styles.imageFit}>
-            </img>
-          </div>
+          <p className={styles.info_p}> Join good company </p>
+          <h2 className={styles.subheader} >We&apos;ll help you track your progress and optimize your workouts based on your input and your favorite routines.</h2>
         </div>
 
         <div className={`${styles.info} ${styles.slideshow_info}`}>
