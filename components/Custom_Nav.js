@@ -3,8 +3,7 @@ import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, Modal, Tex
 import { useSession, signOut, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import LoginModal from "./LoginModal";
-import ExampleModal from "./ExampleModal";
-
+import RegisterModal from "./RegisterModal";
 
 const Custom_Nav = () => {
     const data = useSession();
@@ -52,16 +51,13 @@ const Custom_Nav = () => {
           ) : (
 
 
+          // If user isn't signed in, then the signin and signup buttons are rendered
           <NavbarContent justify="end">
             <NavbarItem className="lg:flex">
-                {/* <ExampleModal></ExampleModal> */}
                 <LoginModal />
-              {/* <Link href="/login">Login</Link> */}
             </NavbarItem>
             <NavbarItem>
-              <Button as={Link} color="primary" href="/register" variant="flat">
-                Sign Up
-              </Button>
+                <RegisterModal></RegisterModal>
             </NavbarItem>
           </NavbarContent>
           )}
