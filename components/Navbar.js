@@ -3,6 +3,8 @@ import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import styles from "../styles/navbar.module.css";
 import {useState} from "react";
+import LoginModal from "@/components/Navbar";
+// import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
 
 const Navbar = () => {
 
@@ -14,7 +16,7 @@ const Navbar = () => {
 
   // useSession hook to ensure proper navbar display, depending on whether user is logged in or not.
   const { data } = useSession();
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
 
 
   // different football leagues
@@ -68,7 +70,7 @@ const Navbar = () => {
 
 
                 {/* Sports Drowndown Menu */}
-                <li className={styles.nav_item}>
+                {/* <li className={styles.nav_item}>
 
                     <ul className={`${styles.nav_item} ${styles.nav_dropdown}`}>
                       <li className={styles.nav_dropdown}>
@@ -87,7 +89,7 @@ const Navbar = () => {
                       </li>
                     </ul>
                     
-                  </li>
+                  </li> */}
                 </ul>
 
                 {/* Logout Button */}

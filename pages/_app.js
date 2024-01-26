@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import Navbar from "@/components/Navbar";
+import Custom_Nav from "@/components/Custom_Nav";
 import Script from "next/script";
 import {NextUIProvider} from '@nextui-org/react'
 import { SessionProvider } from "next-auth/react";
@@ -51,7 +52,8 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
       <main>
         <SessionProvider session={session}>
           <div className={styles.container}>
-            <Navbar />
+            {/* <Navbar /> */}
+            <Custom_Nav />
             <div className={styles.content}>
               <Component {...pageProps} leagueData={leagueData} nbaData={nbaData}/>
             </div>
