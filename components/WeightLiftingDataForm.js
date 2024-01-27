@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSession } from "next-auth/react";
+import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Input, Radio, RadioGroup,
+  Select, SelectItem} from "@nextui-org/react";
 import styles from '@/styles/form.module.css';
 
 
@@ -96,16 +98,16 @@ const WeightLiftingDataform = ( { onFormSubmit }) => {
       action="/api/addLiftingData"
       method="post"
       onSubmit={(event) => handleSubmit(event)}
-      style={{ maxWidth: "576px", margin: "auto" }}>
-      <h3 className="text-center my-5">Upload Your Lifts</h3>
+      style={{  margin: "auto" }}
+      >
+      <h3 className={styles.upload_header}>Upload Your Lifts</h3>
 
       {/* Date Input */}
       <div className="mb-3">
-        <label htmlFor="date">Date</label>
-        <input
-          required
+        <Input
+          isRequired
+          label="Date"
           type="date"
-          className="form-control"
           name="date"
           id="form_date"
         />
@@ -113,24 +115,22 @@ const WeightLiftingDataform = ( { onFormSubmit }) => {
 
       {/* Exercise Input */}
       <div className="mb-3">
-        <label htmlFor="exercise">Exercise</label>
-        <select className="form-control" name="exercise" id="form_exercise">
+        <Select name="exercise" label="Exercise" id="form_exercise">
           {exercises.map((exercise) => (
-            <option key={exercise} value={exercise}>
+            <SelectItem key={exercise} value={exercise}>
               {exercise}
-            </option>
+            </SelectItem>
           ))}
-        </select>
+        </Select>
       </div>
 
       {/* Weight Input */}
       <div className="mb-3">
-        <label htmlFor="weight">Weight</label>
-        <input
-          required
+        <Input
+          isRequired
           type="number"
-          className="form-control"
           name="weight"
+          label="Weight"
           id="form_weight"
           value={formValues.my_weight}
           onChange={(e) =>
@@ -140,11 +140,10 @@ const WeightLiftingDataform = ( { onFormSubmit }) => {
 
       {/* Repititions Input */}
       <div className="mb-3">
-        <label htmlFor="repetitions">Repetitions</label>
-        <input
-          required
+        <Input
+          isRequired
           type="number"
-          className="form-control"
+          label="Repetitions"
           name="repetitions"
           id="form_reps"
           value={formValues.my_repetitions}
@@ -156,8 +155,8 @@ const WeightLiftingDataform = ( { onFormSubmit }) => {
       {/* Upload Button */}
       {<p className="text-danger text-center"></p>}
       <div className="mb-3 text-center">
-        <button className="btn btn-secondary btn-sm" type="submit"
-          >Upload</button>
+        <Button className="btn btn-secondary btn-sm" type="submit"
+          >Upload</Button>
       </div>
     </form>
   </div>

@@ -16,6 +16,7 @@ import { TypeAnimation } from 'react-type-animation';
 import initDB from "@/utils/db";
 import { getToken } from "next-auth/jwt";
 import styles from '@/styles/form.module.css';
+import { Button } from '@nextui-org/react';
 
 
 const BenchPage = () => {
@@ -356,23 +357,23 @@ const BenchPage = () => {
 
         <div className={styles.exercise_buttons}>
           {exercises.map((exercise) => (
-                <button
+                <Button
                   key={exercise}
                   className={styles.individual_buttons}
                   onClick={() => handleExerciseChange(exercise)}
                 >
                   {exercise}
-                </button>
+                </Button>
             ))}
         </div>
 
         <div className={styles.change_chart_type_button_container}>
-          <button
+          <Button
             className={styles.change_chart_type_button}
             onClick={() => handleChartDataType()}
           >
             {chartDataType}
-          </button>
+          </Button>
         </div>
 
         

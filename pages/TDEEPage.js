@@ -15,6 +15,8 @@ const TDEEPage = () => {
   // when router's query parameters change, a re-render of the component is triggered
   var {activity, age, body_fat, gender, height, weight} = router.query;
 
+  // console.log("query: ", router.query);
+
   const activityMap = {
     "sedentary": 1.2,
     "light": 1.375,

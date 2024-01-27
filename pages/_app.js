@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+// import Navbar from "@/components/Navbar";
 import Custom_Nav from "@/components/Custom_Nav";
 import Script from "next/script";
 import {NextUIProvider} from '@nextui-org/react'

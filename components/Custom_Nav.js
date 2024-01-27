@@ -12,9 +12,9 @@ const Custom_Nav = () => {
     const router = useRouter();
 
     // hacky way of sending the user back to the homepage if they signout
-    if (data.status === "unauthenticated") {
-      router.push('/');
-    }
+    // if (data.status === "unauthenticated") {
+    //   router.push('/');
+    // }
 
     const isActiveLink = (targetPath) => router.pathname === targetPath ? "isActive" : "";
 

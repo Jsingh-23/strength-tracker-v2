@@ -11,7 +11,7 @@ const LoginModal = () => {
 
     const { data: session, status } = useSession();
 
-    const [visible, setVisible] = React.useState(false);
+    const [visible, setVisible] = useState(false);
     const handler = () => setVisible(true);
 
     const closeHandler = () => {

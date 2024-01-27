@@ -69,3 +69,15 @@
   .male_input {
     margin-left:1%
   }
+
+
+
+
+  /* Styling for Upload Your Lifts */
+  .upload_header {
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }

@@ -63,7 +63,10 @@ const TDEEModal = () => {
     return (
         <div>
             <Button onPress={onOpen} variant="ghost">TDEE Calculator</Button>
-            <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+            <Modal 
+            isOpen={isOpen} 
+            onOpenChange={onOpenChange}
+            >
                 <ModalContent>
                 {(onClose) => (
                     <>
@@ -163,7 +166,6 @@ const TDEEModal = () => {
                             </div>
 
                             {/* Upload Button */}
-                            {<p className="text-danger text-center"></p>}
                             <div className="mb-3 text-center">
                             <button className="btn btn-secondary btn-sm" 
                                 >Calculate</button>
