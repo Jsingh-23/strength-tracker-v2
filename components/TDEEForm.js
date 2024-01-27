@@ -11,6 +11,7 @@ const TDEEForm = () => {
   const [formSubmitted, setFormSubmitted] = useState(null);
   const [chartDataType, setChartDataType] = useState("Max Weight");
   const [formSubmissions, setFormSubmissions] = useState(0);
+  
   const [formData, setFormData] = useState({
     gender: '',
     age: '',

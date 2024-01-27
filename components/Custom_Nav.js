@@ -4,16 +4,22 @@ import { useSession, signOut, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import LoginModal from "./LoginModal";
 import RegisterModal from "./RegisterModal";
+import TDEEModal from "./TDEEModal";
 import styles from '@/styles/navbar.module.css';
 
 const Custom_Nav = () => {
     const data = useSession();
     const router = useRouter();
 
+    // hacky way of sending the user back to the homepage if they signout
+    if (data.status === "unauthenticated") {
+      router.push('/');
+    }
+
     const isActiveLink = (targetPath) => router.pathname === targetPath ? "isActive" : "";
 
-    console.log("data!!!: ", data);
-    console.log(router.pathname);
+    // console.log("data!!!: ", data);
+    // console.log(router.pathname);
 
     return (
         <Navbar isBordered className={styles.Navbar}>
@@ -27,9 +33,10 @@ const Custom_Nav = () => {
           <NavbarContent className="hidden sm:flex gap-4" justify="center">
 
             <NavbarItem>
-              <Link isBlock color="foreground" href="/weight" className={isActiveLink("/weight")}>
+              <TDEEModal></TDEEModal>
+              {/* <Link isBlock color="foreground" href="/weight" className={isActiveLink("/weight")}>
                 TDEE Calculator
-              </Link>
+              </Link> */}
             </NavbarItem>
 
             <NavbarItem>

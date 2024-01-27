@@ -10,6 +10,7 @@ const TDEEPage = () => {
   const [isRouterReady, setIsRouterReady] = useState(false);
   const [BMR_no_activity, setBMR_no_activity] = useState(1);
   const [BMI,setBMI] = useState(1);
+  const [weight_classification, setWeight_classification] = useState("");
 
   // when router's query parameters change, a re-render of the component is triggered
   var {activity, age, body_fat, gender, height, weight} = router.query;
@@ -29,6 +30,7 @@ const TDEEPage = () => {
     inches = parseInt(inches);
     return feet + inches;
   }
+
 
   const BMRCalculation = (activity, age, body_fat, gender, height, weight) => {
     console.log("calculating...");
@@ -54,6 +56,17 @@ const TDEEPage = () => {
     if (isRouterReady && Object.keys(router.query).length !== 0) {
       BMRCalculation(activity, age, body_fat, gender, height, weight);
       setBMI( (parseInt(weight) / convertHeightStringToInches(height)**2) * 703 );
+      // console.log("BMI : ", BMI);
+      // console.log("comparison: " , BMI <= 18.5);
+      if (BMI <= 18.5) {
+        setWeight_classification("Underweight");
+      } else if (BMI <= 24.99) {
+        setWeight_classification("Normal Weight");
+      } else if (BMI <= 29.99) {
+        setWeight_classification("Overweight");
+      } else {
+        setWeight_classification("Obese");
+      }
     }
     else {
       return;
@@ -123,7 +136,7 @@ const TDEEPage = () => {
 
   <div className={styles.text_center}>
     <h1 className={styles.bmi_header}> BMI SCORE: {Math.trunc(BMI)}.0</h1>
-    <p> Your <b>BMI</b> is <b>{Math.trunc(BMI)}.0</b> , which means you are classified as </p>
+    <p> Your <b>BMI</b> is <b>{Math.trunc(BMI)}.0</b> , which means you are classified as <b> {weight_classification} </b> </p>
 
     <table className={styles.table}>
     <thead>

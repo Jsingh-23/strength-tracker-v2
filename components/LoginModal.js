@@ -61,7 +61,7 @@ const LoginModal = () => {
 
     return (
         <div>
-            <Button onPress={onOpen} variant="ghost">Log In</Button>
+            <Button onPress={onOpen}>Log In</Button>
             <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
                 <ModalContent>
                 {(onClose) => (
