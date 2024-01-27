@@ -4,39 +4,48 @@ import { useSession, signOut, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import LoginModal from "./LoginModal";
 import RegisterModal from "./RegisterModal";
+import styles from '@/styles/navbar.module.css';
 
 const Custom_Nav = () => {
     const data = useSession();
+    const router = useRouter();
 
-    console.log("data!!!: ", data.status);
+    const isActiveLink = (targetPath) => router.pathname === targetPath ? "isActive" : "";
+
+    console.log("data!!!: ", data);
+    console.log(router.pathname);
 
     return (
-        <Navbar>
+        <Navbar isBordered className={styles.Navbar}>
           <NavbarBrand>
             <Link href="/">
-                <h1 className="font-bold text-inherit">StrengthTracker</h1>
+                <h1 className={styles.logo}>StrengthTracker</h1>
             </Link>
           </NavbarBrand>
 
           {data?.status === "authenticated" ? (
           <NavbarContent className="hidden sm:flex gap-4" justify="center">
+
             <NavbarItem>
-              <Link color="foreground" href="/weight">
+              <Link isBlock color="foreground" href="/weight" className={isActiveLink("/weight")}>
                 TDEE Calculator
               </Link>
             </NavbarItem>
-            <NavbarItem isActive>
-              <Link href="/visualize" aria-current="page">
+
+            <NavbarItem>
+              <Link isBlock color="foreground" href="/visualize" className={isActiveLink("/visualize")}>
                 Visualizations
               </Link>
             </NavbarItem>
+
             <NavbarItem>
-              <Link color="foreground" href="/goals">
+              <Link isBlock color="foreground" href="/goals" className={isActiveLink("/goals")}>
                 Goals
               </Link>
             </NavbarItem>
+
             <NavbarItem>
-              <Link color="foreground" href="/showdata">
+              <Link isBlock color="foreground" href="/showdata" className={isActiveLink("/showdata")}>
                 All Data
               </Link>
             </NavbarItem>
@@ -46,6 +55,7 @@ const Custom_Nav = () => {
                     SignOut
                 </Button>
             </NavbarItem>
+
           </NavbarContent>
           
           ) : (

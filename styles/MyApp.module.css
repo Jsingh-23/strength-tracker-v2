@@ -2,11 +2,13 @@
 .container {
   /* Adjust the padding value as needed */
   /* padding-top: 70px;  */
+  height: 100%;
 }
 
 .content {
   /* padding-top: 7rem; Adjust the margin value as needed */
-  background-color: #F5F6F4;
-  margin-bottom: 1rem;
+  /* background-color: #F5F6F4; */
+  margin-bottom: 2rem;
+  height: 100%;
 
 }

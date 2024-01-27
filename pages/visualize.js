@@ -85,7 +85,7 @@ const BenchPage = () => {
   // if user is not authenticated, reroute them to the login page
   const { data: session, status } = useSession();
   if (status === "unauthenticated") {
-    router.push("/login");
+    router.push("/");
   }
 
   // if any of the relevant data hasn't been loaded yet, show a loading screen

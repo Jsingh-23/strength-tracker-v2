@@ -65,7 +65,7 @@ const RegisterModal = () => {
 
     return (
         <div>
-            <Button onPress={onOpen}>Sign Up</Button>
+            <Button onPress={onOpen} variant="ghost">Sign Up</Button>
             <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
                 <ModalContent>
                 {(onClose) => (

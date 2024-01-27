@@ -1,5 +1,4 @@
 import "../styles/globals.css";
-import Navbar from "@/components/Navbar";
 import Custom_Nav from "@/components/Custom_Nav";
 import Script from "next/script";
 import {NextUIProvider} from '@nextui-org/react'
@@ -8,12 +7,8 @@ import { SessionProvider } from "next-auth/react";
 import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";
 import React, { useEffect, useState } from "react";
-// import { Data } from "./Data";
-// import PieChart from "../components/PieChart";
-import BarChart from "../components/BarChart";
-// import "./styles.css";
+
 import styles from "@/styles/MyApp.module.css";
-import { DateTime } from 'luxon';
 
 // import util to allow fetch request to footballapi
 import { getLeagueData } from '@/utils/footballapi.js';
@@ -49,7 +44,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
 
   return (
     <NextUIProvider>
-      <main>
+      <main className="dark text-foreground bg-background">
         <SessionProvider session={session}>
           <div className={styles.container}>
             {/* <Navbar /> */}

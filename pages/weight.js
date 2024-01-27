@@ -72,7 +72,7 @@ const WeightPage = () => {
       )
   }
 
-  return <Link href="/login"> Login </Link>
+  // return <Link href="/login"> Login </Link>
 }
 
 export default WeightPage;

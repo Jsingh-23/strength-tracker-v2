@@ -9,16 +9,6 @@ const LoginModal = () => {
     const router = useRouter();
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
-    const { data: session, status } = useSession();
-
-    const [visible, setVisible] = React.useState(false);
-    const handler = () => setVisible(true);
-
-    const closeHandler = () => {
-        setVisible(false);
-        console.log("closed");
-    };
-
     const [values, setValues] = useState({
         email: "",
         password: "",
