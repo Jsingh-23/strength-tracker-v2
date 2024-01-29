@@ -87,7 +87,7 @@ const Overview = ({ my_data, options, num_workouts, total_weight_lifted, total_r
     <div className={styles["chart-container"]}>
 
         {/* Line Chart Portion */}
-        <p className={styles.label}> Workouts </p>
+        <p className={styles.label}># of Workouts </p>
         <Line
         data={my_data}
         options = {options} />

@@ -6,6 +6,8 @@ import { useSession } from "next-auth/react";
 import image from "next/image";
 import { TypeAnimation } from 'react-type-animation';
 import { useEffect, useState, useRef } from 'react';
+import RegisterModal from '@/components/RegisterModal';
+
 
 
 export default function Home() {
@@ -152,16 +154,16 @@ export default function Home() {
         {data === null && (
           <div className={styles.info2}>
           <h1 className={styles.info2_text}>Want to get started now?</h1>
-          <h3 className={styles.info2_text}> Register now and get started! </h3>
-          <Link href="/register" className={`btn btn-primary ${styles.register_button}`}> Register </Link>
+          <RegisterModal variant="shadow"></RegisterModal>
+          {/* <Link href="/register" className={`btn btn-primary ${styles.register_button}`}> Register </Link> */}
           </div>
         )}
 
       </main>
-
+{/* 
       <footer className={styles.footer}>
           Created by Jaskaranpal Singh
-      </footer>
+      </footer> */}
     </div>
   )
 }

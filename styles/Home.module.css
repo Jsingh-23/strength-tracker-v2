@@ -78,7 +78,7 @@
 
 .info2 {
   margin: 5%;
-  width:95%;
+  width:20%;
   text-align: center;
   font-weight: bold;
   padding: 1%;
@@ -125,6 +125,7 @@
 .slideshow {
   overflow: hidden;
   margin-top: 1%;
+  /* justify-content: center; */
 }
 
 .slide {
@@ -135,7 +136,9 @@
 }
 
 .slideshow_img {
-  text-align: left;
+  text-align: center;
+  margin: auto;
+  margin-top: 1%;
   /* width: 100%;
   height: 100%;
   object-fit: cover; */
@@ -165,6 +168,7 @@
 
 .info2_text {
   color: white;
+  margin-bottom: 1vh;
 }
 
 .register_button {

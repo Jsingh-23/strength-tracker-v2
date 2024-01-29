@@ -169,10 +169,13 @@ const BenchPage = () => {
       {
         label: 'Weight',
         data: data_to_show,
-        backgroundColor: '#9BEDFF',
+        backgroundColor: '#29ccf0',
         borderWidth: 5,
+        pointBorderColor: "white",
+        pointRadius: 1,
         point: {
-          backgroundColor: "black"
+          // pointBorderColor: "white"
+          // borderColor: 
         }
       }
     ],
@@ -293,7 +296,7 @@ const BenchPage = () => {
       },
       line: {
         borderWidth: 5,
-        borderColor: '#F7D5E9',
+        borderColor: '#d9439b',
         tension:0.1,
         // fill: true,
       }

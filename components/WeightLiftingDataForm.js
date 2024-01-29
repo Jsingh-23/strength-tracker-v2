@@ -106,7 +106,7 @@ const WeightLiftingDataform = ( { onFormSubmit }) => {
       <div className="mb-3">
         <Input
           isRequired
-          label="Date"
+          // label="Date"
           type="date"
           name="date"
           id="form_date"
@@ -115,7 +115,7 @@ const WeightLiftingDataform = ( { onFormSubmit }) => {
 
       {/* Exercise Input */}
       <div className="mb-3">
-        <Select name="exercise" label="Exercise" id="form_exercise">
+        <Select name="exercise" label="Exercise" id="form_exercise" isRequired>
           {exercises.map((exercise) => (
             <SelectItem key={exercise} value={exercise}>
               {exercise}

@@ -123,7 +123,7 @@ const GoalsDataForm = ( { onFormSubmit }) => {
 
       {/* Exercise Input */}
       <div className="mb-3">
-        <Select  label="Exercise" name="exercise" id="form_exercise">
+        <Select  label="Exercise" name="exercise" id="form_exercise" isRequired>
           {exercises.map((exercise) => (
             <SelectItem key={exercise} value={exercise}>
               {exercise}
@@ -135,7 +135,7 @@ const GoalsDataForm = ( { onFormSubmit }) => {
       {/* Weight Input */}
       <div className="mb-3">
         <Input
-          required
+          isRequired
           type="number"
           label="Weight"
           name="weight"
@@ -149,7 +149,7 @@ const GoalsDataForm = ( { onFormSubmit }) => {
       {/* Repititions Input */}
       <div className="mb-3">
         <Input
-          required
+          isRequired
           type="number"
           label="Repetitions"
           name="repetitions"
