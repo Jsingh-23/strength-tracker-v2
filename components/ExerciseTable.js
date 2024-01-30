@@ -2,6 +2,7 @@ import React from 'react';
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import {  Table,  TableHeader,  TableBody,  TableColumn,  TableRow,  TableCell, Button} from "@nextui-org/react";
 
 
 const ExerciseTable = ({ exercise, data }) => {
@@ -44,33 +45,33 @@ const ExerciseTable = ({ exercise, data }) => {
 
   return (
     <div style={{borderRadius:'10px', overflow: 'hidden'}}>
-      <table className="table table-striped table-bordered table-rounded custom-table">
-        <thead className="table-dark">
-          <tr>
-            <th>Repetitions</th>
-            <th>Exercise</th>
-            <th>Date</th>
-            <th>Weight</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredData.map(obj => (
-            <tr key={`${obj._id}-${obj.date}`}>
-              <td style={{ border: 'none'}}> {obj.repetitions} </td>
-              <td> {obj.exercise} </td>
-              <td> {new Date(obj.date).toLocaleDateString('en-US', {timeZone: 'UTC'})} </td>
-              <td> {obj.weight} </td>
+      
+      <Table aria-label="Example static collection table">
+      <TableHeader>
+        <TableColumn>Repetitions</TableColumn>
+        <TableColumn>Exercise</TableColumn>
+        <TableColumn>Date</TableColumn>
+        <TableColumn>Weight</TableColumn>
+        <TableColumn></TableColumn>
+      </TableHeader>
 
-              <td style={{ border: 'none'}}>
-                <button type="button" className="btn" onClick={() => handleDelete(obj._id)}>
-                  <i className="bi bi-trash"></i>
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <TableBody>
+        {filteredData.map(obj => (
+          <TableRow key={`${obj._id}-${obj.date}`}>
+            <TableCell>{obj.repetitions}</TableCell>
+            <TableCell>{obj.exercise}</TableCell>
+            <TableCell>{new Date(obj.date).toLocaleDateString('en-US', {timeZone: 'UTC'})}</TableCell>
+            <TableCell>{obj.weight}</TableCell>
+            <TableCell>
+              <Button onClick={() => handleDelete(obj._id)}>
+                <i className='bi bi-trash'></i>
+              </Button>
+            </TableCell>
+             </TableRow>
+        ))}
+
+      </TableBody>
+    </Table>
     </div>
   );
 }
