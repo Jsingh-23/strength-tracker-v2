@@ -1,19 +1,9 @@
-import { getSession } from 'next-auth/react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import BarChart from "@/components/BarChart";
-import LineChart from "@/components/LineChart";
-import WeightLiftingDataform from "@/components/WeightLiftingDataForm";
-import { redirect } from 'next/navigation';
-import Link from "next/link";
 import React, { useEffect, useState, useRef } from "react";
 import ExerciseTable from "@/components/ExerciseTable";
-
-
-import initDB from "@/utils/db";
-import { getToken } from "next-auth/jwt";
-
 import styles from '../styles/table.module.css'
+import { Button, Input } from '@nextui-org/react';
 
 
 const ShowData = () => {
@@ -144,7 +134,7 @@ const ShowData = () => {
     return (
       <div>
         {isReady && (
-          <div>
+          <div className={styles.content_container}>
             <div className={styles.tableContainer}>
               <ExerciseTable
                 className={styles.table}
@@ -155,29 +145,32 @@ const ShowData = () => {
 
             <div className={styles.buttonGroup}>
               {exercises.map((exercise) => (
-                <button
+                <Button
                   key={exercise}
-                  className="btn btn-primary"
-                  style={{ margin: '0 5px' }}
+                  color='primary'
+                  variant='shadow'
                   onClick={() => handleExerciseChange(exercise)}
                 >
                   {exercise}
-                </button>
+                </Button>
               ))}
             </div>
 
-            <div className={`card bg-light ${styles.container}`}>
-              <form onSubmit={(e) => handleSubmit(e)} style={{ maxWidth: '576px', margin: 'auto' }}>
+            <div className={`card bg-white ${styles.container}`}>
+              <form onSubmit={(e) => handleSubmit(e)} style={{ margin: 'auto' }}>
                 <div>
-                  <h2 style={{ textAlign:'center'}}> Add A New Exercise!</h2>
-                  <label htmlFor="exerciseName"> Exercise Name:&nbsp;&nbsp; </label>
-                  <input
+                  <h3 className={styles.upload_header} > Add A New Exercise!</h3>
+                  <Input
+                  isRequired
+                  label="Exercise"
                   type="text"
                   id="exerciseName"
                   ref={exerciseInputRef}
-                  required>
-                  </input>
-                  <button className="btn btn-secondary btn-sm"> Upload</button>
+                  >
+                  </Input>
+                  <div className={styles.upload_button_div}>
+                    <Button className="btn btn-secondary btn-sm"> Upload</Button>
+                  </div>
                 </div>
               </form>
             </div>

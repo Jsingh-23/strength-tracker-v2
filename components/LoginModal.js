@@ -56,7 +56,7 @@ const LoginModal = () => {
         }
 
         // setValues({ email: "", password: "" });
-        router.push("/");
+        router.push("/visualize");
     };
 
     return (
@@ -76,6 +76,7 @@ const LoginModal = () => {
                             // placeholder="Enter your email"
                             // className="form-control"
                             name="email"
+                            placeholder="karan@karan.com"
                             value={email}
                             onChange={handleChange}
                             />
@@ -87,6 +88,7 @@ const LoginModal = () => {
                             // placeholder="Enter your password"
                             // className="form-control"
                             name="password"
+                            placeholder="karan123"
                             value={password}
                             onChange={handleChange}
                             />

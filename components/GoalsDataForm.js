@@ -118,7 +118,7 @@ const GoalsDataForm = ( { onFormSubmit }) => {
       action="/api/addGoalsData"
       method="post"
       onSubmit={(event) => handleSubmit(event)}
-      style={{ maxWidth: "576px", margin: "auto" }}>
+      style={{  margin: "auto" }}>
       <h3 className={styles.upload_header}>Upload Your Goals</h3>
 
       {/* Exercise Input */}
@@ -161,7 +161,6 @@ const GoalsDataForm = ( { onFormSubmit }) => {
       </div>
 
       {/* Upload Button */}
-      {<p className="text-danger text-center"></p>}
       <div className="mb-3 text-center">
         <Button className="btn btn-secondary btn-sm" type="submit"
           >Upload</Button>
