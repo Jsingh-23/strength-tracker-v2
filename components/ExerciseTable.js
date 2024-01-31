@@ -3,32 +3,83 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import {useAsyncList} from "@react-stately/data";
-import {  Table,  TableHeader,  TableBody,  TableColumn,  TableRow,  TableCell, Button, getKeyValue} from "@nextui-org/react";
+import {  Table,  TableHeader,  TableBody,  TableColumn,  TableRow,  TableCell, Button, ButtonGroup, getKeyValue, Spinner} from "@nextui-org/react";
 // import { list } from 'postcss';
+import styles from '../styles/exercisetable.module.css'
 
 
-const ExerciseTable = ({ exercise, data, my_list }) => {
+const ExerciseTable = ({ exercise, data }) => {
 
   const router = useRouter();
+  const [currentExercise, setCurrentExercise] = useState('Bench Press');
+  const [isLoading, setIsLoading] = useState(true);
+  const [liftingData, setLiftingData] = useState([]);
+  const [allExercises, setAllExercises] = useState([]);
 
-  // console.log("data: ", data);
-  // console.log("my_list: ", my_list);
+  // useAsyncList hook is used to manage the data sorting to facilitate table sorting
+  let my_list = useAsyncList({
+    async load({signal}) {
+      let response = await fetch("/api/getLiftingData", {
+        signal,
+      });
 
-  // const filteredList = my_list.items.filter(obj => obj.exercise === exercise);
-  // console.log("filtered list: ", filteredList);
-  // console.log("current exercise: ", exercise);
+      let json = await response.json();
+      setLiftingData(json);
+      setIsLoading(false);
+      return {
+        items: json,
+      };
+    }, 
+    async sort({items, sortDescriptor}) {
+      return {
+        items: items.sort((a,b) => {
+          let first = a[sortDescriptor.column];
+          let second = b[sortDescriptor.column];
+          let cmp = (parseInt(first) || first) < (parseInt(second) || second) ? -1 : 1;
 
-  const [liftingData, setLiftingData] = useState(data);
-
-  // filter the data by exercise, and sort by date
-  const filteredData = liftingData.filter(obj => obj.exercise === exercise);
-  filteredData.sort((a, b) => {
-    const dateA = new Date(a.date);
-    const dateB = new Date(b.date);
-    return dateA - dateB;
+          if (sortDescriptor.direction === 'descending') {
+            cmp *= -1;
+          }
+          return cmp;
+        }),
+      };
+    },
   });
 
-  // let list = useAsyncList({
+  useEffect(() => {
+    const fetchAllExercises = async () => {
+      try {
+        const response2 = await fetch("/api/getExerciseData");
+        if (response2.ok) {
+          const data2 = await response2.json();
+          setAllExercises(data2);
+        } else {
+          throw new Error("Couldn't fetch exercises array");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    const getData = async () => {
+      try {
+        const myData = await fetchAllExercises();
+      } catch (error) {
+        console.error();
+      }
+    }
+    getData();
+  }, [allExercises]);
+
+  // filter the data by exercise, and sort by date
+  if ( !isLoading ) {
+    const filteredData = liftingData.filter(obj => obj.exercise === exercise);
+    filteredData.sort((a, b) => {
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      return dateA - dateB;
+    });
+  }
 
   // handleDelete function for when Delete button is clicked
   const handleDelete = async (objectId) => {
@@ -46,59 +97,61 @@ const ExerciseTable = ({ exercise, data, my_list }) => {
     }
   }; // end of handleDelete()
 
-  useEffect(() => {
-    setLiftingData(data);
-  }, [data]);
+  // useEffect(() => {
+  //   setLiftingData(data);
+  // }, [data]);
 
-  // console.log(my_list);
+  // useEffect( () => {
+  //   setIsLoading(true);
+  // }, [])
 
+  // button handler for changing displayed exercise on the table
+  const handleExerciseChange = (exercise) => {
+    setCurrentExercise(exercise);
+  }
 
   return (
-    <div style={{borderRadius:'10px', overflow: 'hidden'}}>
+    <div className={styles.exercise_table_component_container}>
       
+      {/* This is where the exercise table is configured and rendered */}
       <Table 
         aria-label="Example static collection table"
         selectionMode='single'
         sortDescriptor={my_list.sortDescriptor}
         onSortChange={my_list.sort}>
         <TableHeader>
-          <TableColumn key="repetitions" allowsSorting>Repetitions</TableColumn>
           <TableColumn key="exercise" allowsSorting>Exercise</TableColumn>
+          <TableColumn key="repetitions" allowsSorting>Repetitions</TableColumn>
           <TableColumn key="date" allowsSorting>Date</TableColumn>
           <TableColumn key="weight" allowsSorting>Weight</TableColumn>
           <TableColumn></TableColumn>
         </TableHeader>
 
         <TableBody
-          items={my_list.items.filter(obj => obj.exercise === exercise)}>
+          isLoading={isLoading}
+          loadingContent={<Spinner label="Loading..." />}
+          items={my_list.items.filter(obj => obj.exercise === currentExercise)}>
             {(item) => (
               <TableRow key={`${item._id} - ${item.date}`}>
                 {(columnKey) => <TableCell> {getKeyValue(item, columnKey)} </TableCell>}
-                {/* <TableCell> Hi ! </TableCell> */}
               </TableRow>
             )}
-
           </TableBody>
-
-        {/* <TableBody>
-          {filteredData.map(obj => (
-            <TableRow key={`${obj._id}-${obj.date}`}>
-               {(columnKey) => <TableCell> {getKeyValue(obj, columnKey)} </TableCell>}
-              <TableCell>{obj.repetitions}</TableCell>
-              <TableCell>{obj.exercise}</TableCell>
-              <TableCell>{new Date(obj.date).toLocaleDateString('en-US', {timeZone: 'UTC'})}</TableCell>
-              <TableCell>{obj.weight}</TableCell>
-              <TableCell>
-                <Button onClick={() => handleDelete(obj._id)}>
-                  <i className='bi bi-trash'></i>
-                </Button>
-              </TableCell>
-              </TableRow>
-          ))}
-
-        </TableBody> */}
-
       </Table>
+
+      {/* This is where all the exercise buttons are rendered */}
+      <div className={styles.exercise_buttons_group}>
+        {allExercises.map((exercise) => (
+          <Button
+            className={styles.exercise_change_button}
+            key={exercise}
+            color="primary"
+            onClick={() => handleExerciseChange(exercise)}
+            >
+              {exercise}
+          </Button>
+        ))}
+      </div>
     </div>
   );
 }
