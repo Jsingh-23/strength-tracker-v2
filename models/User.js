@@ -38,6 +38,26 @@ const userSchema = new mongoose.Schema(
         current_max: { type: Number}
       }
     ],
+  },
+  {
+    methods: {
+      organizeLiftingDataByDate() {
+        const organizedData = [];
+        this.liftingData.forEach((data) => {
+          const dataDate = data.date.toISOString().split('T')[0];
+
+          const existingEntry = organizedData.find((entry) => entry.date === dataDate);
+
+          if (existingEntry) {
+            existingEntry.liftingData.push(data);
+          } else {
+            organizedData.push({ date: dataDate, liftingData: [data]});
+          }
+        });
+
+        return organizedData;
+      }
+    }
   }
 );
 

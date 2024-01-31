@@ -5,6 +5,7 @@ import Overview from '@/components/Overview';
 import BarChart from "@/components/BarChart";
 import LineChart from "@/components/LineChart";
 import {defaults, layouts} from 'chart.js';
+// import User from '@/models/User';
 
 import WeightLiftingDataform from "@/components/WeightLiftingDataForm";
 import { redirect } from 'next/navigation';
@@ -22,6 +23,7 @@ import { Button } from '@nextui-org/react';
 const BenchPage = () => {
 
   const router = useRouter();
+  const [organizedDataLiftingData, setOrganizedLiftingData] = useState([]);
   const [liftingData, setLiftingData] = useState(null);
   const [goalsData, setGoalsData] = useState(null);
   const [exercises, setExercises] = useState([]);
@@ -41,10 +43,12 @@ const BenchPage = () => {
         if (response.ok) {
           const data = await response.json();
           console.log("length in useeffect: ", data.length);
+          console.log(data);
           setLiftingData(data);
         } else {
           throw new Error("Couldn't fetch data :( ");
         }
+        
         const response2 = await fetch("/api/getExerciseData");
         if (response2.ok) {
           const data2 = await response2.json();
@@ -52,12 +56,21 @@ const BenchPage = () => {
         } else {
           throw new Error("Couldn't fetch exercises array");
         }
+        
         const response3 = await fetch("/api/getGoalsData");
         if (response3.ok) {
           const data3 = await response3.json();
           setGoalsData(data3);
         } else {
           throw new Error("Couldn't fetch goals data");
+        }
+
+        const response4 = await fetch("/api/getOrganizedLiftingDataByDate");
+        if (response4.ok) {
+          const data4 = await response4.json();
+          setOrganizedLiftingData(data4);
+        } else {
+          throw new Error("Couldn't get organized lifting data by date");
         }
 
       } catch (error) {
@@ -321,6 +334,8 @@ const BenchPage = () => {
     console.log("Submitted! ", formSubmissions);
     setFormSubmissions(formSubmissions + 1);
   }
+
+  console.log("organized data: ", organizedDataLiftingData);
 
   // render the contents if the user is logged in, otherwise redirect them to the login page
   if (status === "authenticated") {

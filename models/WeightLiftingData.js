@@ -8,8 +8,6 @@ const weightLiftingDataSchema = new mongoose.Schema({
   repetitions: { type: Number },
 });
 
-// const WeightLiftingData = mongoose.model('WeightLiftingData', weightLiftingDataSchema);
 
 export default mongoose.models.WeightLiftingData || mongoose.model("WeightLiftingData", weightLiftingDataSchema);
 
-// export default WeightLiftingData;

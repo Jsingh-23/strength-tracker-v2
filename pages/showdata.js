@@ -4,6 +4,7 @@ import React, { useEffect, useState, useRef } from "react";
 import ExerciseTable from "@/components/ExerciseTable";
 import styles from '../styles/table.module.css'
 import { Button, Input } from '@nextui-org/react';
+import { useAsyncList } from '@react-stately/data';
 
 
 const ShowData = () => {
@@ -11,6 +12,7 @@ const ShowData = () => {
   const router = useRouter();
 
   const [liftingData, setLiftingData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [exercises, setExercises] = useState([]);
   const [selectedExercise, setSelectedExercise] = useState('Bench Press');
   const [exerciseName, setExerciseName] = useState('');
@@ -25,9 +27,98 @@ const ShowData = () => {
     setSelectedExercise(exercise);
   };
 
+  // let list = useAsyncList({
+  //   async load({signal}) {
+  //     let res = await fetch('https://swapi.py4e.com/api/people/?search', {
+  //       signal,
+  //     });
+  //     let json = await res.json();
+  //     setIsLoading(false);
+
+  //     console.log("json: ", json);
+
+  //     return {
+  //       items: json.results,
+  //     };
+  //   },
+  //   async sort({items, sortDescriptor}) {
+  //     return {
+  //       items: items.sort((a, b) => {
+  //         let first = a[sortDescriptor.column];
+  //         let second = b[sortDescriptor.column];
+  //         let cmp = (parseInt(first) || first) < (parseInt(second) || second) ? -1 : 1;
+
+  //         if (sortDescriptor.direction === "descending") {
+  //           cmp *= -1;
+  //         }
+
+  //         return cmp;
+  //       }),
+  //     };
+  //   },
+  // });
+
+  let list = useAsyncList({
+    async load({signal}) {
+      let response = await fetch("/api/getLiftingData", {
+        signal,
+      });
+      let json = await response.json();
+      setLiftingData(json);
+
+      return {
+        items: json,
+      };
+    }, 
+    async sort({items, sortDescriptor}) {
+      return {
+        items: items.sort((a,b) => {
+          let first = a[sortDescriptor.column];
+          let second = b[sortDescriptor.column];
+          let cmp = (parseInt(first) || first) < (parseInt(second) || second) ? -1 : 1;
+
+          if (sortDescriptor.direction === 'descending') {
+            cmp *= -1;
+          }
+
+          return cmp;
+        }),
+      };
+    },
+  });
+
+
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // let list = useAsyncList({
+        //   async load({signal}) {
+        //     let response = await fetch("/api/getLiftingData", {
+        //       signal,
+        //     });
+        //     let json = await response.json();
+        //     setLiftingData(json);
+        //     return {
+        //       items: json.results,
+        //     };
+        //   }, 
+        //   async sort({items, sortDescriptor}) {
+        //     return {
+        //       items: items.sort((a,b) => {
+        //         let first = a[sortDescriptor.column];
+        //         let second = b[sortDescriptor.column];
+        //         let cmp = (parseInt(first) || first) < (parseInt(second) || second) ? -1 : 1;
+
+        //         if (sortDescriptor.direction === 'descending') {
+        //           cmp *= -1;
+        //         }
+
+        //         return cmp;
+        //       }),
+        //     };
+        //   }
+        // });
+
         const response = await fetch("/api/getLiftingData");
         console.log("fetching data again...");
         if (response.ok) {
@@ -36,6 +127,7 @@ const ShowData = () => {
         } else {
           throw new Error("Couldn't fetch data :( ");
         }
+
         const response2 = await fetch("/api/getExerciseData");
         if (response2.ok) {
           const data2 = await response2.json();
@@ -58,7 +150,6 @@ const ShowData = () => {
           console.error();
         }
       }
-
       getData();
     }, [exerciseName]); // end of useEffect()
 
@@ -66,7 +157,6 @@ const ShowData = () => {
     const handleSubmit = async ( data, e ) => {
 
       event.preventDefault();
-      console.log("Form Submitted!");
 
       // exercise name validation
       var newExerciseName = document.getElementById('exerciseName').value;
@@ -81,11 +171,7 @@ const ShowData = () => {
         return false;
       }
 
-      console.log("newExerciseName: " + newExerciseName);
-
       const JSONdata = JSON.stringify(newExerciseName);
-
-      // console.log("json data: " + JSONdata);
 
       // if the inputted exercise is unique, then add it to the user's exercises array
       if (exercises.includes(newExerciseName)) {
@@ -140,6 +226,7 @@ const ShowData = () => {
                 className={styles.table}
                 exercise={selectedExercise}
                 data={liftingData}
+                my_list={list}
               ></ExerciseTable>
             </div>
 

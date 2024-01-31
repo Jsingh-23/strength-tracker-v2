@@ -32,7 +32,7 @@ const Overview = ({ my_data, options, num_workouts, total_weight_lifted, total_r
         return calculatePercentage( exerciseobj.data[0], get_goal_weight(exercise));
     }
 
-    // set up chart data based on inputted exercise
+    // set up chart data based on inputted exercise (this is for the donut charts)
     const exercise_data = (exercise) => {
         return {
             labels: [
