@@ -110,6 +110,8 @@ const ExerciseTable = ({ exercise, data }) => {
     setCurrentExercise(exercise);
   }
 
+  console.log("lifting data: ", liftingData);
+
   return (
     <div className={styles.exercise_table_component_container}>
       
@@ -133,7 +135,12 @@ const ExerciseTable = ({ exercise, data }) => {
           items={my_list.items.filter(obj => obj.exercise === currentExercise)}>
             {(item) => (
               <TableRow key={`${item._id} - ${item.date}`}>
-                {(columnKey) => <TableCell> {getKeyValue(item, columnKey)} </TableCell>}
+                {(columnKey) => (
+                <TableCell>
+                  {columnKey === 'date' ? new Date(item.date).toLocaleDateString('en-US') : getKeyValue(item, columnKey)}
+                </TableCell>
+              )}
+                {/* {(columnKey) => <TableCell> {getKeyValue(item, columnKey)} </TableCell>} */}
               </TableRow>
             )}
           </TableBody>
@@ -145,7 +152,6 @@ const ExerciseTable = ({ exercise, data }) => {
           <Button
             className={styles.exercise_change_button}
             key={exercise}
-            color="primary"
             onClick={() => handleExerciseChange(exercise)}
             >
               {exercise}

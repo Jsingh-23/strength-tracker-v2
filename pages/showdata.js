@@ -159,7 +159,6 @@ const ShowData = () => {
             
             <div className={`card bg-white ${styles.container}`}>
               <form onSubmit={(e) => handleSubmit(e)} style={{ margin: 'auto' }}>
-
                 <div>
                   <h3 className={styles.upload_header} > Add A New Exercise!</h3>
                   <Input

@@ -17,7 +17,8 @@
 }
 
 .exercise_change_button {
-    /* padding: 1%; */
-    /* margin-bottom: 0.5vh; */
+    border-radius: 5px;
+    background-color: #826DEC;
+    color: white;
     margin: 1%;
 }

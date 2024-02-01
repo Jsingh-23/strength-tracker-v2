@@ -71,6 +71,8 @@ const WeightLiftingDataform = ( { onFormSubmit }) => {
       repetitions: formData.get('repetitions')
     });
 
+    console.log("date: ", jsonData.date);
+
     try {
       const res = await fetch('/api/addLiftingData', {
         method: 'POST',

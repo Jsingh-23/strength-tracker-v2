@@ -335,7 +335,7 @@ const BenchPage = () => {
     setFormSubmissions(formSubmissions + 1);
   }
 
-  console.log("organized data: ", organizedDataLiftingData);
+  // console.log("organized data: ", organizedDataLiftingData);
 
   // render the contents if the user is logged in, otherwise redirect them to the login page
   if (status === "authenticated") {
