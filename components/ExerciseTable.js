@@ -46,6 +46,7 @@ const ExerciseTable = ({ exercise, data }) => {
     },
   });
 
+// use effect
   useEffect(() => {
     const fetchAllExercises = async () => {
       try {
