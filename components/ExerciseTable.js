@@ -60,6 +60,7 @@ const ExerciseTable = ({ exercise, data }) => {
         }
       } catch (error) {
         console.error(error);
+        // 
       }
     };
 
