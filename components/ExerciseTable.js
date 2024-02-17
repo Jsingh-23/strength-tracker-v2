@@ -74,7 +74,7 @@ const ExerciseTable = ({ exercise, data }) => {
     getData();
   }, [allExercises]);
 
-  // filter the data by exercise, and sort by date
+  // filter the data by exercise, and sort by date for initial table
   if ( !isLoading ) {
     const filteredData = liftingData.filter(obj => obj.exercise === exercise);
     filteredData.sort((a, b) => {
