@@ -30,7 +30,7 @@ const ExerciseTable = ({ exercise, data }) => {
         items: json,
       };
     }, 
-    // sort function for table
+    // sort function for table, so starting values are sorted
     async sort({items, sortDescriptor}) {
       return {
         items: items.sort((a,b) => {
