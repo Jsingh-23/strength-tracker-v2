@@ -64,6 +64,7 @@ const ExerciseTable = ({ exercise, data }) => {
       }
     };
 
+    // get data 
     const getData = async () => {
       try {
         const myData = await fetchAllExercises();
