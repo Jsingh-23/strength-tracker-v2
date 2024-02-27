@@ -6,6 +6,7 @@ import {useAsyncList} from "@react-stately/data";
 import {  Table,  TableHeader,  TableBody,  TableColumn,  TableRow,  TableCell, Button, ButtonGroup, getKeyValue, Spinner} from "@nextui-org/react";
 // import { list } from 'postcss';
 import styles from '../styles/exercisetable.module.css'
+// import styles
 
 
 const ExerciseTable = ({ exercise, data }) => {
