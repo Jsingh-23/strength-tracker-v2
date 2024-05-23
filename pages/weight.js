@@ -23,7 +23,7 @@ const WeightPage = () => {
   const [chartDataType, setChartDataType] = useState("Max Weight");
   const [formSubmissions, setFormSubmissions] = useState(0);
 
-
+// use effect
   useEffect(() => {
     console.log("running use effect...");
     const fetchData = async () => {
