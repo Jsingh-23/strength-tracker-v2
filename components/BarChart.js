@@ -2,6 +2,7 @@ import { Bar } from "react-chartjs-2";
 import styles from '@/styles/chart.module.css';
 import 'chartjs-plugin-datalabels';
 
+// Bar chart component
 const BarChart = ({ my_data, rep_data }) => {
 
   // if rep_data has length 0, then this means I am rendering this BarChart component
