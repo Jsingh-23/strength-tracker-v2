@@ -1,8 +1,8 @@
 import { getSession } from 'next-auth/react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import BarChart from "@/components/BarChart";
-import LineChart from "@/components/LineChart";
+import BarChart from "@/components/charts/BarChart";
+import LineChart from "@/components/charts/LineChart";
 import TDEEForm from "@/components/TDEEForm";
 import { redirect } from 'next/navigation';
 import Link from "next/link";

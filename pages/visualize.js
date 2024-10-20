@@ -1,9 +1,9 @@
 import { getSession } from 'next-auth/react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import Overview from '@/components/Overview';
-import BarChart from "@/components/BarChart";
-import LineChart from "@/components/LineChart";
+import Overview from '@/components/charts/Overview';
+import BarChart from "@/components/charts/BarChart";
+import LineChart from "@/components/charts/LineChart";
 import {defaults, layouts} from 'chart.js';
 // import User from '@/models/User';
 
