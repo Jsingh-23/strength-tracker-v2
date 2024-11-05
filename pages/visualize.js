@@ -5,6 +5,7 @@ import Overview from '@/components/charts/Overview';
 import BarChart from "@/components/charts/BarChart";
 import LineChart from "@/components/charts/LineChart";
 import {defaults, layouts} from 'chart.js';
+import Spinner from '@/components/spinner/spinner';
 // import User from '@/models/User';
 
 import WeightLiftingDataform from "@/components/WeightLiftingDataForm";
@@ -16,6 +17,7 @@ import { TypeAnimation } from 'react-type-animation';
 
 import initDB from "@/utils/db";
 import { getToken } from "next-auth/jwt";
+
 import styles from '@/styles/form.module.css';
 import { Button } from '@nextui-org/react';
 
@@ -89,7 +91,7 @@ const BenchPage = () => {
       getData();
     }, [formSubmissions]); // end of useEffect()
 
-    defaults.font.family = 'Arial';
+  defaults.font.family = 'Arial';
 
   // store weight, date, and repetitions data for Bench Press
   var chart_data = [];
@@ -104,7 +106,7 @@ const BenchPage = () => {
 
   // if any of the relevant data hasn't been loaded yet, show a loading screen
   if (liftingData === null || goalsData === null || exercises === null) {
-      return <div> Loading... </div>;
+      return <Spinner/>;
   }
 
   // sort the liftingData by date

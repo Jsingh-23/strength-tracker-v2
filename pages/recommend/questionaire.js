@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import {Button, Input} from "@nextui-org/react";
 import styles from '@/styles/form.module.css';
 
-console.log("hi");
 
 const Questionaire = () => {
     const router = useRouter();
@@ -17,6 +16,9 @@ const Questionaire = () => {
                 <div className="mb-3">
                     <label htmlFor="experience">What is your experience level?</label>
                     <select className="form-control" name="experience" id="form_experience">
+                        <option value="beginner">I am new to exercise</option>
+                        <option value="intermediate">I workout occassionally</option>
+                        <option value="advanced">I workout everyday</option>
                     </select>
                 </div>
 
