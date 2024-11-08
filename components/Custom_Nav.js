@@ -11,15 +11,7 @@ const Custom_Nav = () => {
     const data = useSession();
     const router = useRouter();
 
-    // hacky way of sending the user back to the homepage if they signout
-    // if (data.status === "unauthenticated") {
-    //   router.push('/');
-    // }
-
     const isActiveLink = (targetPath) => router.pathname === targetPath ? "isActive" : "";
-
-    // console.log("data!!!: ", data);
-    // console.log(router.pathname);
 
     return (
         <Navbar isBordered className={styles.Navbar}>
@@ -40,7 +32,7 @@ const Custom_Nav = () => {
             </NavbarItem>
 
             <NavbarItem>
-              <Link isBlock color="foreground" href="/visualize" className={isActiveLink("/visualize")}>
+              <Link isBlock color="foreground" href="/visualize" className={isActiveLink("/visualize")} >
                 Visualizations
               </Link>
             </NavbarItem>
@@ -52,7 +44,7 @@ const Custom_Nav = () => {
             </NavbarItem>
 
             <NavbarItem>
-              <Link isBlock color="foreground" href="/showdata" className={isActiveLink("/showdata")}>
+              <Link isBlock color="foreground" href="/showdata" className={`${isActiveLink("/goals")} foreground`}>
                 All Data
               </Link>
             </NavbarItem>

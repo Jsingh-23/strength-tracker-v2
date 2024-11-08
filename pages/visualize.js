@@ -48,7 +48,7 @@ const BenchPage = () => {
           console.log(data);
           setLiftingData(data);
         } else {
-          throw new Error("Couldn't fetch data :( ");
+          throw new Error("Couldn't fetch lifting data :( ");
         }
         
         const response2 = await fetch("/api/getExerciseData");
@@ -72,7 +72,7 @@ const BenchPage = () => {
           const data4 = await response4.json();
           setOrganizedLiftingData(data4);
         } else {
-          throw new Error("Couldn't get organized lifting data by date");
+          throw new Error("Couldn't fetch organized lifting data by date");
         }
 
       } catch (error) {
